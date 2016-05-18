@@ -16,9 +16,6 @@
 #   (Optional) Image disk format
 #   Defaults to $::os_service_default
 #
-# [*openstack_client_http_timeout*]
-#   (Optional) HTTP timeout for any of OpenStack service in seconds
-#   Defaults to $::os_service_default
 #
 # [*project_domain*]
 #   (Optional) ID of domain in which projects will be created.
@@ -36,13 +33,17 @@
 #   (Optional) ID of domain in which users will be created.
 #   Defaults to $::os_service_default
 #
+# [*openstack_client_http_timeout*]
+#   (optional) HTTP timeout for any of OpenStack service in seconds (floating point value)
+#   Defaults to undef.
+#
 class rally::settings (
   $cirros_img_url                = $::os_service_default,
-  $openstack_client_http_timeout = $::os_service_default,
   $project_domain                = $::os_service_default,
   $resource_deletion_timeout     = $::os_service_default,
   $resource_management_workers   = $::os_service_default,
   $user_domain                   = $::os_service_default,
+  $openstack_client_http_timeout = undef,
 ) {
 
   include ::rally::settings::cinder
@@ -57,7 +58,6 @@ class rally::settings (
   include ::rally::settings::swift
 
   rally_config {
-    'DEFAULT/openstack_client_http_timeout':     value => $openstack_client_http_timeout;
     'cleanup/resource_deletion_timeout':         value => $resource_deletion_timeout;
     'image/cirros_img_url':                      value => $cirros_img_url;
     'users_context/project_domain':              value => $project_domain;

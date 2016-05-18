@@ -1,14 +1,43 @@
 # == Class: rally
 #
-# Full description of class rally here.
+# This class is used to specify configuration default section parameters in rally.
 #
-# === Parameters
+# === Parameters:
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
+# [*ensure_package*]
+#   (optional) The state of rally packages
+#   Defaults to 'present'.
 #
-class rally {
+# [*rally_debug*]
+#   (optional) Print debugging output only for Rally. (boolean value)
+#   Defaults to $::os_service_default.
+#
+# [*openstack_client_http_timeout*]
+#   (optional) HTTP timeout for any of OpenStack service in seconds (floating point value)
+#   Defaults to $::os_service_default.
+#
+class rally (
+  $ensure_package                = 'present',
+  $rally_debug                   = $::os_service_default,
+  $openstack_client_http_timeout = $::os_service_default
+) inherits ::rally::params {
 
-  include ::rally::params
+  include ::rally::db
+  include ::rally::logging
+  include ::rally::settings
+
+  # Keep backward compatibility
+  $openstack_client_http_timeout_real = pick($::rally::settings::openstack_client_http_timeout,$openstack_client_http_timeout)
+
+  package { 'rally':
+    ensure => $ensure_package,
+    name   => $::rally::params::package_name,
+    tag    => ['openstack', 'rally-package'],
+  }
+
+  rally_config {
+    'DEFAULT/rally_debug':                   value => $rally_debug;
+    'DEFAULT/openstack_client_http_timeout': value => $openstack_client_http_timeout_real;
+  }
 
 }
