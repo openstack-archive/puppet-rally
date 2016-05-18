@@ -21,11 +21,16 @@
 #   in the rally config.
 #   Defaults to false.
 #
+# [*sync_db*]
+#   (Optional) Run db sync on the node.
+#   Defaults to true.
+#
 class rally (
   $ensure_package                = 'present',
   $rally_debug                   = $::os_service_default,
   $openstack_client_http_timeout = $::os_service_default,
   $purge_config                  = false,
+  $sync_db                       = true,
 ) inherits ::rally::params {
 
   include ::rally::db
@@ -45,9 +50,12 @@ class rally (
     purge => $purge_config,
   }
 
-  rally_config {
-    'DEFAULT/rally_debug':                   value => $rally_debug;
-    'DEFAULT/openstack_client_http_timeout': value => $openstack_client_http_timeout_real;
+  if $sync_db {
+    include ::rally::db::sync
   }
 
+  rally_config {
+    'DEFAULT/rally_debug':                   value => $rally_debug;
+    'DEFAULT/openstack_client_http_timeout': value => $openstack_client_http_timeout;
+  }
 }
