@@ -60,6 +60,17 @@ class rally::db (
   validate_re($database_connection_real,
     '(sqlite|mysql|postgresql):\/\/(\S+:\S+@\S+\/\S+)?')
 
+  # This is only for rally SQLite
+  if $database_connection_real =~ /^sqlite:\/\// {
+    $sqlite_dir = regsubst($database_connection_real,'^sqlite:\/\/\/(\S+)+\/(\S+)$','\1')
+    ensure_resource('file', $sqlite_dir,{
+      ensure => directory,
+      owner  => root,
+      group  => root,
+      mode   => '0755',
+    })
+  }
+
   oslo::db { 'rally_config':
     connection     => $database_connection_real,
     idle_timeout   => $database_idle_timeout_real,
