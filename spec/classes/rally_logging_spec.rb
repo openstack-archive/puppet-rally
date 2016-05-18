@@ -29,7 +29,6 @@ describe 'rally::logging' do
      :log_facility => 'LOG_FOO',
      :log_dir => '/var/log',
      :log_file => 'rally.log',
-     :verbose => true,
      :debug => true,
     }
   end
@@ -63,7 +62,6 @@ describe 'rally::logging' do
       is_expected.to contain_rally_config('DEFAULT/syslog_log_facility').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('DEFAULT/log_dir').with(:value => '/var/log/rally')
       is_expected.to contain_rally_config('DEFAULT/log_file').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('DEFAULT/verbose').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('DEFAULT/debug').with(:value => '<SERVICE DEFAULT>')
     end
   end
@@ -75,7 +73,6 @@ describe 'rally::logging' do
       is_expected.to contain_rally_config('DEFAULT/syslog_log_facility').with(:value => 'LOG_FOO')
       is_expected.to contain_rally_config('DEFAULT/log_dir').with(:value => '/var/log')
       is_expected.to contain_rally_config('DEFAULT/log_file').with(:value => 'rally.log')
-      is_expected.to contain_rally_config('DEFAULT/verbose').with(:value => 'true')
       is_expected.to contain_rally_config('DEFAULT/debug').with(:value => 'true')
     end
   end

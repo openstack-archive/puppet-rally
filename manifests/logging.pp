@@ -4,10 +4,6 @@
 #
 # == parameters
 #
-#  [*verbose*]
-#    (Optional) Should the daemons log verbose messages
-#    Defaults to $::os_service_default
-#
 #  [*debug*]
 #    (Optional) Should the daemons log debug messages
 #    Defaults to $::os_service_default
@@ -103,7 +99,6 @@ class rally::logging(
   $log_facility                  = $::os_service_default,
   $log_file                      = $::os_service_default,
   $log_dir                       = '/var/log/rally',
-  $verbose                       = $::os_service_default,
   $debug                         = $::os_service_default,
   $logging_context_format_string = $::os_service_default,
   $logging_default_format_string = $::os_service_default,
@@ -120,7 +115,6 @@ class rally::logging(
 
   oslo::log { 'rally_config':
     debug                         => $debug,
-    verbose                       => $verbose,
     use_syslog                    => $use_syslog,
     use_stderr                    => $use_stderr,
     log_dir                       => $log_dir,
