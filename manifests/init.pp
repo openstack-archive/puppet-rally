@@ -16,10 +16,16 @@
 #   (optional) HTTP timeout for any of OpenStack service in seconds (floating point value)
 #   Defaults to $::os_service_default.
 #
+# [*purge_config*]
+#   (optional) Whether to set only the specified config options
+#   in the rally config.
+#   Defaults to false.
+#
 class rally (
   $ensure_package                = 'present',
   $rally_debug                   = $::os_service_default,
-  $openstack_client_http_timeout = $::os_service_default
+  $openstack_client_http_timeout = $::os_service_default,
+  $purge_config                  = false,
 ) inherits ::rally::params {
 
   include ::rally::db
@@ -33,6 +39,10 @@ class rally (
     ensure => $ensure_package,
     name   => $::rally::params::package_name,
     tag    => ['openstack', 'rally-package'],
+  }
+
+  resources { 'rally_config':
+    purge => $purge_config,
   }
 
   rally_config {

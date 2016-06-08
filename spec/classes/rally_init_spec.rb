@@ -5,9 +5,13 @@ describe 'rally' do
   shared_examples 'rally' do
 
     context 'with default parameters' do
-     it 'contains the logging class' do
-       is_expected.to contain_class('rally::logging')
-     end
+      let :params do
+        { :purge_config => false  }
+      end
+
+      it 'contains the logging class' do
+        is_expected.to contain_class('rally::logging')
+      end
 
       it 'installs packages' do
         is_expected.to contain_package('rally').with(
@@ -15,6 +19,12 @@ describe 'rally' do
           :ensure => 'present',
           :tag    => ['openstack', 'rally-package']
         )
+      end
+
+      it 'passes purge to resource' do
+        is_expected.to contain_resources('rally_config').with({
+          :purge => false
+        })
       end
 
       it 'configures default rally params' do
