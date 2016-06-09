@@ -1,5 +1,5 @@
 {
-  "name": "puppet-rally",
+  "name": "openstack-rally",
   "version": "0.0.1",
   "author": "OpenStack Contributors",
   "summary": "Puppet module for OpenStack Rally",
