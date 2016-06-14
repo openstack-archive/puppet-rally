@@ -12,7 +12,18 @@ describe 'rally::db' do
       it { is_expected.to contain_rally_config('database/max_pool_size').with_value('<SERVICE DEFAULT>') }
       it { is_expected.to contain_rally_config('database/max_overflow').with_value('<SERVICE DEFAULT>') }
       it { is_expected.to contain_rally_config('database/db_max_retries').with_value('<SERVICE DEFAULT>') }
+
+      it 'should create sqlite rally directory' do
+        is_expected.to contain_file('/var/lib/rally').with(
+          :ensure => 'directory',
+          :owner  => 'root',
+          :group  => 'root',
+          :mode   => '0755',
+          :path   => '/var/lib/rally',
+        )
+      end
     end
+
 
     context 'with specific parameters' do
       let :params do
@@ -35,6 +46,9 @@ describe 'rally::db' do
       it { is_expected.to contain_rally_config('database/max_pool_size').with_value('11') }
       it { is_expected.to contain_rally_config('database/max_overflow').with_value('21') }
       it { is_expected.to contain_rally_config('database/db_max_retries').with_value('-1') }
+      it 'should not create sqlite rally directory' do
+        is_expected.to_not contain_file('create_sqlite_directory')
+      end
     end
 
     context 'with postgresql backend' do
