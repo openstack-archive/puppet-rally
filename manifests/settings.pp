@@ -4,19 +4,6 @@
 #
 # === Parameters
 #
-# [*cirros_img_url*]
-#   (Optional) CirrOS image URL
-#   Defaults to $::os_service_default
-#
-# [*container_format*]
-#   (Optional) Image container formate
-#   Defaults to $::os_service_default
-#
-# [*disk_format*]
-#   (Optional) Image disk format
-#   Defaults to $::os_service_default
-#
-#
 # [*project_domain*]
 #   (Optional) ID of domain in which projects will be created.
 #   Defaults to $::os_service_default
@@ -38,7 +25,6 @@
 #   Defaults to undef.
 #
 class rally::settings (
-  $cirros_img_url                = $::os_service_default,
   $project_domain                = $::os_service_default,
   $resource_deletion_timeout     = $::os_service_default,
   $resource_management_workers   = $::os_service_default,
@@ -56,10 +42,10 @@ class rally::settings (
   include ::rally::settings::nova
   include ::rally::settings::sahara
   include ::rally::settings::swift
+  include ::rally::settings::tempest
 
   rally_config {
     'cleanup/resource_deletion_timeout':         value => $resource_deletion_timeout;
-    'image/cirros_img_url':                      value => $cirros_img_url;
     'users_context/project_domain':              value => $project_domain;
     'users_context/resource_management_workers': value => $resource_management_workers;
     'users_context/user_domain':                 value => $user_domain;

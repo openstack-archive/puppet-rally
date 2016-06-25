@@ -10,7 +10,6 @@ describe 'rally::settings' do
   let :rally_settings_params do
     {
       :openstack_client_http_timeout => 180.0,
-      :cirros_img_url                => 'http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img',
       :resource_deletion_timeout     => 600,
       :project_domain                => 'default',
       :resource_management_workers   => 30,
@@ -20,7 +19,6 @@ describe 'rally::settings' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally settings with default parameters' do
-      is_expected.to contain_rally_config('image/cirros_img_url').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('cleanup/resource_deletion_timeout').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('users_context/project_domain').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('users_context/resource_management_workers').with(:value => '<SERVICE DEFAULT>')
@@ -31,7 +29,6 @@ describe 'rally::settings' do
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_settings_params ) }
     it 'configures rally settings with all parameters' do
-      is_expected.to contain_rally_config('image/cirros_img_url').with(:value => 'http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img')
       is_expected.to contain_rally_config('cleanup/resource_deletion_timeout').with(:value => 600)
       is_expected.to contain_rally_config('users_context/project_domain').with(:value => 'default')
       is_expected.to contain_rally_config('users_context/resource_management_workers').with(:value => 30)
