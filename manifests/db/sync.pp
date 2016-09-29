@@ -24,6 +24,8 @@ class rally::db::sync(
     path        => '/usr/bin',
     user        => 'root',
     refreshonly => true,
+    try_sleep   => 5,
+    tries       => 10,
     logoutput   => on_failure,
   }
 
