@@ -43,6 +43,7 @@ class rally::settings (
   include ::rally::settings::sahara
   include ::rally::settings::swift
   include ::rally::settings::tempest
+  include ::rally::settings::magnum
 
   rally_config {
     'cleanup/resource_deletion_timeout':         value => $resource_deletion_timeout;
