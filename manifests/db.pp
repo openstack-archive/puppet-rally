@@ -49,6 +49,8 @@ class rally::db (
   $database_db_max_retries = $::os_service_default,
 ) {
 
+  include ::rally::deps
+
   $database_connection_real = pick($::rally::database_connection, $database_connection)
   $database_idle_timeout_real = pick($::rally::database_idle_timeout, $database_idle_timeout)
   $database_min_pool_size_real = pick($::rally::database_min_pool_size, $database_min_pool_size)

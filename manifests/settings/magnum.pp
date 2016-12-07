@@ -22,6 +22,8 @@ class rally::settings::magnum (
   $magnum_cluster_create_poll_interval = $::os_service_default,
 ) {
 
+  include ::rally::deps
+
   rally_config {
     'benchmark/magnum_cluster_create_prepoll_delay': value => $magnum_cluster_create_prepoll_delay;
     'benchmark/magnum_cluster_create_timeout':       value => $magnum_cluster_create_timeout;

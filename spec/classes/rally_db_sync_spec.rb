@@ -12,7 +12,11 @@ describe 'rally::db::sync' do
         :refreshonly => 'true',
         :try_sleep   => 5,
         :tries       => 10,
-        :logoutput   => 'on_failure'
+        :logoutput   => 'on_failure',
+        :subscribe   => ['Anchor[rally::install::end]',
+                         'Anchor[rally::config::end]',
+                         'Anchor[rally::dbsync::begin]'],
+        :notify      => 'Anchor[rally::dbsync::end]',
       )
     end
 
@@ -31,7 +35,11 @@ describe 'rally::db::sync' do
         :refreshonly => 'true',
         :try_sleep   => 5,
         :tries       => 10,
-        :logoutput   => 'on_failure'
+        :logoutput   => 'on_failure',
+        :subscribe   => ['Anchor[rally::install::end]',
+                         'Anchor[rally::config::end]',
+                         'Anchor[rally::dbsync::begin]'],
+        :notify      => 'Anchor[rally::dbsync::end]',
       )
       }
     end

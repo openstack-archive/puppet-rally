@@ -32,6 +32,8 @@ class rally::settings::manila (
   $share_delete_timeout       = $::os_service_default,
 ) {
 
+  include ::rally::deps
+
   rally_config {
     'benchmark/manila_share_create_poll_interval':         value => $share_create_poll_interval;
     'benchmark/manila_share_create_prepoll_delay':         value => $share_create_prepoll_delay;

@@ -40,7 +40,7 @@ class rally::db::postgresql(
   $privileges = 'ALL',
 ) {
 
-  Class['rally::db::postgresql'] -> Service<| title == 'rally' |>
+  include ::rally::deps
 
   ::openstacklib::db::postgresql { 'rally':
     password_hash => postgresql_password($user, $password),
@@ -50,6 +50,8 @@ class rally::db::postgresql(
     privileges    => $privileges,
   }
 
-  ::Openstacklib::Db::Postgresql['rally'] ~> Exec<| title == 'rally-manage db_sync' |>
+  Anchor['rally::db::begin']
+  ~> Class['rally::db::postgresql']
+  ~> Anchor['rally::db::end']
 
 }

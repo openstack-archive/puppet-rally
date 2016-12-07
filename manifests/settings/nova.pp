@@ -342,6 +342,8 @@ class rally::settings::nova (
   $vm_ping_timeout                     = $::os_service_default,
 ) {
 
+  include ::rally::deps
+
   rally_config {
     'benchmark/nova_detach_volume_poll_interval':          value => $detach_volume_poll_interval;
     'benchmark/nova_detach_volume_timeout':                value => $detach_volume_timeout;

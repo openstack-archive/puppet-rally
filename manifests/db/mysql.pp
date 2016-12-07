@@ -53,6 +53,8 @@ class rally::db::mysql(
   $allowed_hosts = undef
 ) {
 
+  include ::rally::deps
+
   validate_string($password)
 
   ::openstacklib::db::mysql { 'rally':
@@ -65,5 +67,8 @@ class rally::db::mysql(
     allowed_hosts => $allowed_hosts,
   }
 
-  ::Openstacklib::Db::Mysql['rally'] ~> Exec<| title == 'rally-manage db_sync' |>
+  Anchor['rally::db::begin']
+  ~> Class['rally::db::mysql']
+  ~> Anchor['rally::db::end']
+
 }

@@ -32,6 +32,7 @@ class rally::settings (
   $openstack_client_http_timeout = undef,
 ) {
 
+  include ::rally::deps
   include ::rally::settings::cinder
   include ::rally::settings::ec2
   include ::rally::settings::glance

@@ -128,6 +128,8 @@ class rally::settings::heat (
   $stack_user_role             = $::os_service_default,
 ) {
 
+  include ::rally::deps
+
   rally_config {
     'benchmark/heat_stack_check_poll_interval':    value => $stack_check_poll_interval;
     'benchmark/heat_stack_check_timeout':          value => $stack_check_timeout;

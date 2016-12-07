@@ -17,6 +17,8 @@ class rally::settings::murano (
   $deploy_environment_timeout        = $::os_service_default,
 ) {
 
+  include ::rally::deps
+
   rally_config {
     'benchmark/murano_deploy_environment_check_interval':  value => $deploy_environment_check_interval;
     'benchmark/murano_deploy_environment_timeout':         value => $deploy_environment_timeout;

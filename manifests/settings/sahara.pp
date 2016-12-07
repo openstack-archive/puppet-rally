@@ -37,6 +37,8 @@ class rally::settings::sahara (
   $workers_per_proxy      = $::os_service_default,
 ) {
 
+  include ::rally::deps
+
   rally_config {
     'benchmark/sahara_cluster_check_interval': value => $cluster_check_interval;
     'benchmark/sahara_cluster_create_timeout': value => $cluster_create_timeout;

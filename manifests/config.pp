@@ -24,6 +24,8 @@ class rally::config (
   $rally_config = {},
 ) {
 
+  include ::rally::deps
+
   validate_hash($rally_config)
 
   create_resources('rally_config', $rally_config)

@@ -33,6 +33,8 @@ class rally::settings::glance (
   $image_delete_timeout       = $::os_service_default,
 ) {
 
+  include ::rally::deps
+
   rally_config {
     'benchmark/glance_image_create_poll_interval': value => $image_create_poll_interval;
     'benchmark/glance_image_create_prepoll_delay': value => $image_create_prepoll_delay;

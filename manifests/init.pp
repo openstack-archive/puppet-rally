@@ -33,6 +33,7 @@ class rally (
   $sync_db                       = true,
 ) inherits ::rally::params {
 
+  include ::rally::deps
   include ::rally::db
   include ::rally::logging
   include ::rally::settings

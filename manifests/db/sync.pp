@@ -13,11 +13,8 @@ class rally::db::sync(
   $extra_params = '--config-file /etc/rally/rally.conf',
 ) {
 
+  include ::rally::deps
   include ::rally::params
-
-  Package<| tag == 'rally-package' |> ~> Exec['rally-manage db_sync']
-
-  Rally_config<||> ~> Exec['rally-manage db_sync']
 
   exec { 'rally-manage db_sync':
     command     => "rally-manage ${extra_params} db create",
@@ -27,6 +24,12 @@ class rally::db::sync(
     try_sleep   => 5,
     tries       => 10,
     logoutput   => on_failure,
+    subscribe   => [
+      Anchor['rally::install::end'],
+      Anchor['rally::config::end'],
+      Anchor['rally::dbsync::begin']
+    ],
+    notify      => Anchor['rally::dbsync::end'],
   }
 
 }
