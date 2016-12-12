@@ -47,6 +47,7 @@ class rally::settings (
   include ::rally::settings::magnum
   include ::rally::settings::mistral
   include ::rally::settings::monasca
+  include ::rally::settings::watcher
 
   rally_config {
     'cleanup/resource_deletion_timeout':         value => $resource_deletion_timeout;
