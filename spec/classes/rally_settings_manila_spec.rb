@@ -10,9 +10,9 @@ describe 'rally::settings::manila' do
   let :rally_manila_params do
     {
       :share_create_prepoll_delay => 2.0,
-      :share_create_timeout => 300.0,
+      :share_create_timeout       => 300.0,
       :share_create_poll_interval => 3.0,
-      :share_delete_timeout => 180.0,
+      :share_delete_timeout       => 180.0,
       :share_delete_poll_interval => 2.0,
     }
   end

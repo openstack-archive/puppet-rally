@@ -9,7 +9,7 @@ describe 'rally::settings::swift' do
 
   let :rally_swift_params do
     {
-      :operator_role => 'Member',
+      :operator_role       => 'Member',
       :reseller_admin_role => 'ResellerAdmin',
     }
   end

@@ -10,9 +10,9 @@ describe 'rally::settings::glance' do
   let :rally_glance_params do
     {
       :image_create_prepoll_delay => 2.0,
-      :image_create_timeout => 120.0,
+      :image_create_timeout       => 120.0,
       :image_create_poll_interval => 1.0,
-      :image_delete_timeout => 120.0,
+      :image_delete_timeout       => 120.0,
       :image_delete_poll_interval => 1.0,
     }
   end

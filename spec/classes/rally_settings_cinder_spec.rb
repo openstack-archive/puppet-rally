@@ -10,9 +10,9 @@ describe 'rally::settings::cinder' do
   let :rally_cinder_params do
     {
       :volume_create_prepoll_delay => 2.0,
-      :volume_create_timeout => 600.0,
+      :volume_create_timeout       => 600.0,
       :volume_create_poll_interval => 2.0,
-      :volume_delete_timeout => 600.0,
+      :volume_delete_timeout       => 600.0,
       :volume_delete_poll_interval => 2.0,
     }
   end

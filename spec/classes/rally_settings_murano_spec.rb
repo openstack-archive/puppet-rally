@@ -9,7 +9,7 @@ describe 'rally::settings::murano' do
 
   let :rally_murano_params do
     {
-      :deploy_environment_timeout => 1200,
+      :deploy_environment_timeout        => 1200,
       :deploy_environment_check_interval => 5,
     }
   end

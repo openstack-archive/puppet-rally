@@ -10,7 +10,7 @@ describe 'rally::settings::ec2' do
   let :rally_ec2_params do
     {
       :server_boot_prepoll_delay => 1.0,
-      :server_boot_timeout => 300.0,
+      :server_boot_timeout       => 300.0,
       :server_boot_poll_interval => 1.0,
     }
   end

@@ -12,8 +12,8 @@ describe 'rally::settings::sahara' do
       :cluster_create_timeout => 1800,
       :cluster_delete_timeout => 900,
       :cluster_check_interval => 5,
-      :job_execution_timeout => 600,
-      :job_check_interval => 5,
+      :job_execution_timeout  => 600,
+      :job_check_interval     => 5,
     }
   end
 
