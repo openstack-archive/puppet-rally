@@ -24,6 +24,10 @@ class rally::deps {
   ~> Service<| tag == 'rally-service' |>
   ~> anchor { 'rally::service::end': }
 
+  # all db settings should be applied and all packages should be installed
+  # before dbsync starts
+  Oslo::Db<||> -> Anchor['rally::dbsync::begin']
+
   # Installation or config changes will always restart services.
   Anchor['rally::install::end'] ~> Anchor['rally::service::begin']
   Anchor['rally::config::end']  ~> Anchor['rally::service::begin']
