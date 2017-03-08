@@ -4,7 +4,7 @@
 #
 # === Parameters:
 #
-# [*ensure_package*]
+# [*package_ensure*]
 #   (optional) The state of rally packages
 #   Defaults to 'present'.
 #
@@ -25,12 +25,20 @@
 #   (Optional) Run db sync on the node.
 #   Defaults to true.
 #
+# DEPRECATED PARAMETERS
+#
+# [*ensure_package*]
+#   (optional) The state of rally packages
+#   Defaults to undef.
+#
 class rally (
-  $ensure_package                = 'present',
+  $package_ensure                = 'present',
   $rally_debug                   = $::os_service_default,
   $openstack_client_http_timeout = $::os_service_default,
   $purge_config                  = false,
   $sync_db                       = true,
+  # DEPRECATED PARAMETERS
+  $ensure_package                = undef,
 ) inherits ::rally::params {
 
   include ::rally::deps
@@ -41,8 +49,16 @@ class rally (
   # Keep backward compatibility
   $openstack_client_http_timeout_real = pick($::rally::settings::openstack_client_http_timeout,$openstack_client_http_timeout)
 
+  if $ensure_package {
+    warning("rally::ensure_package is deprecated and will be removed in \
+the future release. Please use rally::package_ensure instead.")
+    $package_ensure_real = $ensure_package
+  } else {
+    $package_ensure_real = $package_ensure
+  }
+
   package { 'rally':
-    ensure => $ensure_package,
+    ensure => $package_ensure_real,
     name   => $::rally::params::package_name,
     tag    => ['openstack', 'rally-package'],
   }
