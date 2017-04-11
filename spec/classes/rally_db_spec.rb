@@ -4,14 +4,16 @@ describe 'rally::db' do
 
   shared_examples 'rally::db' do
     context 'with default parameters' do
-      it { is_expected.to contain_rally_config('database/connection').with_value('sqlite:////var/lib/rally/rally.sqlite') }
-      it { is_expected.to contain_rally_config('database/idle_timeout').with_value('<SERVICE DEFAULT>') }
-      it { is_expected.to contain_rally_config('database/min_pool_size').with_value('<SERVICE DEFAULT>') }
-      it { is_expected.to contain_rally_config('database/max_retries').with_value('<SERVICE DEFAULT>') }
-      it { is_expected.to contain_rally_config('database/retry_interval').with_value('<SERVICE DEFAULT>') }
-      it { is_expected.to contain_rally_config('database/max_pool_size').with_value('<SERVICE DEFAULT>') }
-      it { is_expected.to contain_rally_config('database/max_overflow').with_value('<SERVICE DEFAULT>') }
-      it { is_expected.to contain_rally_config('database/db_max_retries').with_value('<SERVICE DEFAULT>') }
+      it { is_expected.to contain_oslo__db('rally_config').with(
+        :db_max_retries => '<SERVICE DEFAULT>',
+        :connection     => 'sqlite:////var/lib/rally/rally.sqlite',
+        :idle_timeout   => '<SERVICE DEFAULT>',
+        :min_pool_size  => '<SERVICE DEFAULT>',
+        :max_pool_size  => '<SERVICE DEFAULT>',
+        :max_retries    => '<SERVICE DEFAULT>',
+        :retry_interval => '<SERVICE DEFAULT>',
+        :max_overflow   => '<SERVICE DEFAULT>',
+      )}
 
       it 'should create sqlite rally directory' do
         is_expected.to contain_file('/var/lib/rally').with(
@@ -38,14 +40,16 @@ describe 'rally::db' do
         }
       end
 
-      it { is_expected.to contain_rally_config('database/connection').with_value('mysql://rally:rally@localhost/rally') }
-      it { is_expected.to contain_rally_config('database/idle_timeout').with_value('3601') }
-      it { is_expected.to contain_rally_config('database/min_pool_size').with_value('2') }
-      it { is_expected.to contain_rally_config('database/max_retries').with_value('11') }
-      it { is_expected.to contain_rally_config('database/retry_interval').with_value('11') }
-      it { is_expected.to contain_rally_config('database/max_pool_size').with_value('11') }
-      it { is_expected.to contain_rally_config('database/max_overflow').with_value('21') }
-      it { is_expected.to contain_rally_config('database/db_max_retries').with_value('-1') }
+      it { is_expected.to contain_oslo__db('rally_config').with(
+        :db_max_retries => '-1',
+        :connection     => 'mysql://rally:rally@localhost/rally',
+        :idle_timeout   => '3601',
+        :min_pool_size  => '2',
+        :max_pool_size  => '11',
+        :max_retries    => '11',
+        :retry_interval => '11',
+        :max_overflow   => '21',
+      )}
       it 'should not create sqlite rally directory' do
         is_expected.to_not contain_file('create_sqlite_directory')
       end
@@ -53,7 +57,7 @@ describe 'rally::db' do
 
     context 'with postgresql backend' do
       let :params do
-        { :database_connection     => 'postgresql://rally:rally@localhost/rally', }
+        { :database_connection => 'postgresql://rally:rally@localhost/rally', }
       end
 
       it 'install the proper backend package' do
@@ -64,7 +68,7 @@ describe 'rally::db' do
 
     context 'with incorrect database_connection string' do
       let :params do
-        { :database_connection     => 'foodb://rally:rally@localhost/rally', }
+        { :database_connection => 'foodb://rally:rally@localhost/rally', }
       end
 
       it_raises 'a Puppet::Error', /validate_re/
