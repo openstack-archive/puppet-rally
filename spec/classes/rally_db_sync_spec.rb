@@ -17,6 +17,7 @@ describe 'rally::db::sync' do
                          'Anchor[rally::config::end]',
                          'Anchor[rally::dbsync::begin]'],
         :notify      => 'Anchor[rally::dbsync::end]',
+        :tag         => 'openstack-db',
       )
     end
 
@@ -40,6 +41,7 @@ describe 'rally::db::sync' do
                          'Anchor[rally::config::end]',
                          'Anchor[rally::dbsync::begin]'],
         :notify      => 'Anchor[rally::dbsync::end]',
+        :tag         => 'openstack-db',
       )
       }
     end
