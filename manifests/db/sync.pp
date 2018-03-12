@@ -30,6 +30,7 @@ class rally::db::sync(
       Anchor['rally::dbsync::begin']
     ],
     notify      => Anchor['rally::dbsync::end'],
+    tag         => 'openstack-db',
   }
 
 }
