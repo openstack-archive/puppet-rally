@@ -13,6 +13,7 @@ describe 'rally::db' do
         :max_retries    => '<SERVICE DEFAULT>',
         :retry_interval => '<SERVICE DEFAULT>',
         :max_overflow   => '<SERVICE DEFAULT>',
+        :pool_timeout   => '<SERVICE DEFAULT>',
       )}
 
       it 'should create sqlite rally directory' do
@@ -36,6 +37,7 @@ describe 'rally::db' do
           :database_retry_interval => '11',
           :database_max_pool_size  => '11',
           :database_max_overflow   => '21',
+          :database_pool_timeout   => '21',
           :database_db_max_retries => '-1',
         }
       end
@@ -49,6 +51,7 @@ describe 'rally::db' do
         :max_retries    => '11',
         :retry_interval => '11',
         :max_overflow   => '21',
+        :pool_timeout   => '21',
       )}
       it 'should not create sqlite rally directory' do
         is_expected.to_not contain_file('create_sqlite_directory')
