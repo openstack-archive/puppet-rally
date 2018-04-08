@@ -14,7 +14,6 @@ class rally::db::sync(
 ) {
 
   include ::rally::deps
-  include ::rally::params
 
   exec { 'rally-manage db_sync':
     command     => "rally-manage ${extra_params} db create",
