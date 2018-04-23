@@ -14,6 +14,8 @@ describe 'rally::config' do
       { :rally_config => config_hash }
     end
 
+    it { is_expected.to contain_class('rally::deps') }
+
     it 'configures arbitrary rally-config configurations' do
       is_expected.to contain_rally_config('DEFAULT/foo').with_value('fooValue')
       is_expected.to contain_rally_config('DEFAULT/bar').with_value('barValue')
