@@ -33,7 +33,7 @@ Setup
 
 **What the rally module affects**
 
-* [Rally](https://wiki.openstack.org/wiki/Rally), the Benchmarking service for Openstack.
+* [Rally](https://rally.readthedocs.io/en/latest/), the Benchmarking service for Openstack.
 
 ### Installing rally
 
@@ -42,7 +42,7 @@ Setup
 
 ### Beginning with rally
 
-To utilize the rally module's functionality you will need to declare multiple resources.  The following is a modified excerpt from the [openstack module](https://github.com/stackfoge/puppet-openstack).  This is not an exhaustive list of all the components needed, we recommend you consult and understand the [openstack module](https://github.com/stackforge/puppet-openstack) and the [core openstack](http://docs.openstack.org) documentation.
+To utilize the rally module's functionality you will need to declare multiple resources.  The following is a modified excerpt from the [openstack module](https://github.com/stackforge/puppet-openstack).  This is not an exhaustive list of all the components needed, we recommend you consult and understand the [openstack module](https://github.com/stackforge/puppet-openstack) and the [core openstack](http://docs.openstack.org) documentation.
 
 Implementation
 --------------
