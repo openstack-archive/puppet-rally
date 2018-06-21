@@ -83,3 +83,8 @@ Contributors
 ------------
 
 * https://github.com/openstack/puppet-rally/graphs/contributors
+
+Release Notes
+-------------
+
+* https://docs.openstack.org/releasenotes/puppet-rally
