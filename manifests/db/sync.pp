@@ -4,7 +4,7 @@
 # == Parameters
 #
 # [*extra_params*]
-#   (optional) String of extra command line parameters to append
+#   (Optional) String of extra command line parameters to append
 #   to the rally-manage db sync command. These will be inserted
 #   in the command line between 'rally-manage' and 'db create'.
 #   Defaults to '--config-file /etc/rally/rally.conf'
