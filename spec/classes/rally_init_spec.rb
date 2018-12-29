@@ -9,10 +9,6 @@ describe 'rally' do
         { :purge_config => false  }
       end
 
-      it 'contains the logging class' do
-        is_expected.to contain_class('rally::logging')
-      end
-
       it 'installs packages' do
         is_expected.to contain_package('rally').with(
           :name   => platform_params[:package_name],

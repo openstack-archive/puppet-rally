@@ -35,7 +35,6 @@ class rally (
 
   include ::rally::deps
   include ::rally::db
-  include ::rally::logging
   include ::rally::settings
 
   # Keep backward compatibility
