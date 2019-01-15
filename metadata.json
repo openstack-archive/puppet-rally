@@ -11,7 +11,7 @@
     "requirements": [
         {
             "name": "puppet",
-            "version_requirement": "4.x"
+            "version_requirement": "5.x"
         }
     ],
     "operatingsystem_support": [
