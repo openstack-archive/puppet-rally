@@ -3,7 +3,9 @@ require 'spec_helper'
 describe 'rally::db' do
   shared_examples 'rally::db' do
     context 'with default parameters' do
-      it { is_expected.to contain_oslo__db('rally_config').with(
+      it { should contain_class('rally::deps') }
+
+      it { should contain_oslo__db('rally_config').with(
         :db_max_retries => '<SERVICE DEFAULT>',
         :connection     => 'sqlite:////var/lib/rally/rally.sqlite',
         :idle_timeout   => '<SERVICE DEFAULT>',
@@ -15,7 +17,7 @@ describe 'rally::db' do
         :pool_timeout   => '<SERVICE DEFAULT>',
       )}
 
-      it { is_expected.to contain_file('/var/lib/rally').with(
+      it { should contain_file('/var/lib/rally').with(
         :ensure => 'directory',
         :owner  => 'root',
         :group  => 'root',
@@ -39,7 +41,9 @@ describe 'rally::db' do
         }
       end
 
-      it { is_expected.to contain_oslo__db('rally_config').with(
+      it { should contain_class('rally::deps') }
+
+      it { should contain_oslo__db('rally_config').with(
         :db_max_retries => '-1',
         :connection     => 'mysql://rally:rally@localhost/rally',
         :idle_timeout   => '3601',
@@ -51,27 +55,7 @@ describe 'rally::db' do
         :pool_timeout   => '21',
       )}
 
-      it { is_expected.to_not contain_file('create_sqlite_directory') }
-    end
-
-    context 'with postgresql backend' do
-      let :params do
-        {
-          :database_connection => 'postgresql://rally:rally@localhost/rally'
-        }
-      end
-
-      it { is_expected.to contain_package('python-psycopg2').with_ensure('present') }
-    end
-
-    context 'with incorrect database_connection string' do
-      let :params do
-        {
-          :database_connection => 'foodb://rally:rally@localhost/rally'
-        }
-      end
-
-      it { should raise_error(Puppet::Error, /validate_re/) }
+      it { should_not contain_file('create_sqlite_directory') }
     end
   end
 
