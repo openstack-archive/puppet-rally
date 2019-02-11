@@ -49,7 +49,7 @@ class rally::db::mysql(
 
   ::openstacklib::db::mysql { 'rally':
     user          => $user,
-    password_hash => mysql_password($password),
+    password_hash => mysql::password($password),
     dbname        => $dbname,
     host          => $host,
     charset       => $charset,
