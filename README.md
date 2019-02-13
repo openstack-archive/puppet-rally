@@ -33,7 +33,7 @@ Setup
 
 **What the rally module affects**
 
-* [Rally](https://rally.readthedocs.io/en/latest/), the Benchmarking service for Openstack.
+* [Rally](https://docs.openstack.org/rally/latest/), the Benchmarking service for Openstack.
 
 ### Installing rally
 
