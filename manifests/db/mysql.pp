@@ -45,7 +45,7 @@ class rally::db::mysql(
 
   include ::rally::deps
 
-  validate_string($password)
+  validate_legacy(String, 'validate_string', $password)
 
   ::openstacklib::db::mysql { 'rally':
     user          => $user,
