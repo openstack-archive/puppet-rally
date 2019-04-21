@@ -22,7 +22,7 @@ rally
 Overview
 --------
 
-The rally module is a part of [OpenStack](https://git.openstack.org), an effort by the Openstack infrastructure team to provide continuous integration testing and code review for Openstack and Openstack community projects not part of the core software.  The module its self is used to flexibly configure and manage the Benchmarking service for Openstack.
+The rally module is a part of [OpenStack](https://opendev.org/openstack), an effort by the Openstack infrastructure team to provide continuous integration testing and code review for Openstack and Openstack community projects not part of the core software.  The module its self is used to flexibly configure and manage the Benchmarking service for Openstack.
 
 Module Description
 ------------------
