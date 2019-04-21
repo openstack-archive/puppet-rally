@@ -93,4 +93,4 @@ Release Notes
 Repository
 -------------
 
-* https://git.openstack.org/cgit/openstack/puppet-rally
+* https://opendev.org/openstack/puppet-rally
