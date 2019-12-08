@@ -33,7 +33,7 @@ class rally::settings::cinder (
   $volume_delete_timeout       = $::os_service_default,
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   rally_config {
     'benchmark/cinder_volume_create_poll_interval': value => $volume_create_poll_interval;

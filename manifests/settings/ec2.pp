@@ -22,7 +22,7 @@ class rally::settings::ec2 (
   $server_boot_timeout       = $::os_service_default,
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   rally_config {
     'benchmark/ec2_server_boot_poll_interval': value => $server_boot_poll_interval;

@@ -24,7 +24,7 @@ class rally::config (
   $rally_config = {},
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   validate_legacy(Hash, 'validate_hash', $rally_config)
 

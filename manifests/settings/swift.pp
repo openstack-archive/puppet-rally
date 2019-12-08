@@ -17,7 +17,7 @@ class rally::settings::swift (
   $reseller_admin_role = $::os_service_default,
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   rally_config {
     'role/swift_operator_role':       value => $operator_role;

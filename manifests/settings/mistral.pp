@@ -12,7 +12,7 @@ class rally::settings::mistral (
   $mistral_execution_timeout = $::os_service_default,
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   rally_config {
     'benchmark/mistral_execution_timeout': value => $mistral_execution_timeout;

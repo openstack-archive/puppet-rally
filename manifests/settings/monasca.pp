@@ -12,7 +12,7 @@ class rally::settings::monasca (
   $monasca_metric_create_prepoll_delay = $::os_service_default,
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   rally_config {
     'benchmark/monasca_metric_create_prepoll_delay': value => $monasca_metric_create_prepoll_delay;

@@ -63,7 +63,7 @@ class rally::settings::tempest (
   $heat_instance_type_ram    = $::os_service_default
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   rally_config {
     'tempest/img_url':                   value => $img_url;

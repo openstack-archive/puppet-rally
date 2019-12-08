@@ -33,9 +33,9 @@ class rally (
   $sync_db                       = true,
 ) inherits ::rally::params {
 
-  include ::rally::deps
-  include ::rally::db
-  include ::rally::settings
+  include rally::deps
+  include rally::db
+  include rally::settings
 
   # Keep backward compatibility
   $openstack_client_http_timeout_real = pick($::rally::settings::openstack_client_http_timeout,$openstack_client_http_timeout)
@@ -51,7 +51,7 @@ class rally (
   }
 
   if $sync_db {
-    include ::rally::db::sync
+    include rally::db::sync
   }
 
   rally_config {

@@ -32,7 +32,7 @@ class rally::db::postgresql(
   $privileges = 'ALL',
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   ::openstacklib::db::postgresql { 'rally':
     password_hash => postgresql_password($user, $password),

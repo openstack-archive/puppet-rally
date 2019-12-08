@@ -123,7 +123,7 @@ class rally::logging(
   $log_date_format               = $::os_service_default,
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   oslo::log { 'rally_config':
     debug                         => $debug,

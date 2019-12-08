@@ -3,7 +3,7 @@
 # Parameters for puppet-rally
 #
 class rally::params {
-  include ::openstacklib::defaults
+  include openstacklib::defaults
 
   case $::osfamily {
     'RedHat': {

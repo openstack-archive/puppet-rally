@@ -17,7 +17,7 @@ class rally::settings::watcher (
   $audit_launch_timeout       = $::os_service_default,
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   rally_config {
     'benchmark/watcher_audit_launch_poll_interval': value => $audit_launch_poll_interval;

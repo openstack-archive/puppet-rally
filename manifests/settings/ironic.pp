@@ -12,7 +12,7 @@ class rally::settings::ironic (
   $node_create_poll_interval = $::os_service_default,
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   rally_config {
     'benchmark/ironic_node_create_poll_interval': value => $node_create_poll_interval;

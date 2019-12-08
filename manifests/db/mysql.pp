@@ -43,7 +43,7 @@ class rally::db::mysql(
   $allowed_hosts = undef
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   validate_legacy(String, 'validate_string', $password)
 

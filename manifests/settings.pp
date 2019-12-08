@@ -32,22 +32,22 @@ class rally::settings (
   $openstack_client_http_timeout = undef,
 ) {
 
-  include ::rally::deps
-  include ::rally::settings::cinder
-  include ::rally::settings::ec2
-  include ::rally::settings::glance
-  include ::rally::settings::heat
-  include ::rally::settings::ironic
-  include ::rally::settings::manila
-  include ::rally::settings::murano
-  include ::rally::settings::nova
-  include ::rally::settings::sahara
-  include ::rally::settings::swift
-  include ::rally::settings::tempest
-  include ::rally::settings::magnum
-  include ::rally::settings::mistral
-  include ::rally::settings::monasca
-  include ::rally::settings::watcher
+  include rally::deps
+  include rally::settings::cinder
+  include rally::settings::ec2
+  include rally::settings::glance
+  include rally::settings::heat
+  include rally::settings::ironic
+  include rally::settings::manila
+  include rally::settings::murano
+  include rally::settings::nova
+  include rally::settings::sahara
+  include rally::settings::swift
+  include rally::settings::tempest
+  include rally::settings::magnum
+  include rally::settings::mistral
+  include rally::settings::monasca
+  include rally::settings::watcher
 
   rally_config {
     'cleanup/resource_deletion_timeout':         value => $resource_deletion_timeout;

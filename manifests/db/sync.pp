@@ -13,7 +13,7 @@ class rally::db::sync(
   $extra_params = '--config-file /etc/rally/rally.conf',
 ) {
 
-  include ::rally::deps
+  include rally::deps
 
   exec { 'rally-manage db_sync':
     command     => "rally-manage ${extra_params} db create",
