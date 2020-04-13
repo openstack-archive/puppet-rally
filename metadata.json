@@ -1,6 +1,6 @@
 {
     "name": "openstack-rally",
-    "version": "4.2.0",
+    "version": "4.2.1",
     "author": "OpenStack Contributors",
     "summary": "Puppet module for OpenStack Rally",
     "license": "Apache-2.0",
