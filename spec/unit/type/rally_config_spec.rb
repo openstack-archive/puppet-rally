@@ -1,5 +1,6 @@
 require 'puppet'
 require 'puppet/type/rally_config'
+
 describe 'Puppet::Type.type(:rally_config)' do
   before :each do
     @rally_config = Puppet::Type.type(:rally_config).new(:name => 'DEFAULT/foo', :value => 'bar')
@@ -52,13 +53,12 @@ describe 'Puppet::Type.type(:rally_config)' do
 
   it 'should autorequire the package that install the file' do
     catalog = Puppet::Resource::Catalog.new
-    package = Puppet::Type.type(:package).new(:name => 'rally')
-    catalog.add_resource package, @rally_config
+    anchor = Puppet::Type.type(:anchor).new(:name => 'rally::install::end')
+    catalog.add_resource anchor, @rally_config
     dependency = @rally_config.autorequire
     expect(dependency.size).to eq(1)
     expect(dependency[0].target).to eq(@rally_config)
-    expect(dependency[0].source).to eq(package)
+    expect(dependency[0].source).to eq(anchor)
   end
-
 
 end

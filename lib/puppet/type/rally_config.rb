@@ -46,8 +46,8 @@ Puppet::Type.newtype(:rally_config) do
     defaultto('<SERVICE DEFAULT>')
   end
 
-  autorequire(:package) do
-    'rally'
+  autorequire(:anchor) do
+    ['rally::install::end']
   end
 
 end
