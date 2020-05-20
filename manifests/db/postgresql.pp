@@ -35,11 +35,11 @@ class rally::db::postgresql(
   include rally::deps
 
   ::openstacklib::db::postgresql { 'rally':
-    password_hash => postgresql_password($user, $password),
-    dbname        => $dbname,
-    user          => $user,
-    encoding      => $encoding,
-    privileges    => $privileges,
+    password   => $password,
+    dbname     => $dbname,
+    user       => $user,
+    encoding   => $encoding,
+    privileges => $privileges,
   }
 
   Anchor['rally::db::begin']

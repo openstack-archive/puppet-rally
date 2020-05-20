@@ -7,7 +7,7 @@ describe 'rally::db::mysql' do
 
   let :params do
     {
-      :password => 'fooboozoo_default_password',
+      :password => 'rallypass',
     }
   end
 
@@ -15,7 +15,7 @@ describe 'rally::db::mysql' do
     context 'with only required params' do
       it { should contain_openstacklib__db__mysql('rally').with(
         :user          => 'rally',
-        :password_hash => '*3DDF34A86854A312A8E2C65B506E21C91800D206',
+        :password      => 'rallypass',
         :dbname        => 'rally',
         :host          => '127.0.0.1',
         :charset       => 'utf8',
@@ -30,7 +30,7 @@ describe 'rally::db::mysql' do
 
       it { should contain_openstacklib__db__mysql('rally').with(
         :user          => 'rally',
-        :password_hash => '*3DDF34A86854A312A8E2C65B506E21C91800D206',
+        :password      => 'rallypass',
         :dbname        => 'rally',
         :host          => '127.0.0.1',
         :charset       => 'utf8',
@@ -46,7 +46,7 @@ describe 'rally::db::mysql' do
 
       it { should contain_openstacklib__db__mysql('rally').with(
         :user           => 'rally',
-        :password_hash  => '*3DDF34A86854A312A8E2C65B506E21C91800D206',
+        :password       => 'rallypass',
         :dbname         => 'rally',
         :host           => '127.0.0.1',
         :charset        => 'utf8',
