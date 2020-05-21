@@ -4,7 +4,7 @@ describe 'rally::db::postgresql' do
 
   shared_examples_for 'rally::db::postgresql' do
     let :req_params do
-      { :password => 'pw' }
+      { :password => 'rallypass' }
     end
 
     let :pre_condition do
@@ -16,9 +16,12 @@ describe 'rally::db::postgresql' do
         req_params
       end
 
-      it { is_expected.to contain_postgresql__server__db('rally').with(
-        :user     => 'rally',
-        :password => 'md57b5a90b88dc0c51cd5ddb3f2107309df'
+      it { is_expected.to contain_openstacklib__db__postgresql('rally').with(
+        :user       => 'rally',
+        :password   => 'rallypass',
+        :dbname     => 'rally',
+        :encoding   => nil,
+        :privileges => 'ALL',
       )}
     end
 
