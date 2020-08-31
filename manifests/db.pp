@@ -76,9 +76,6 @@ class rally::db (
   $database_retry_interval_real = pick($::rally::database_retry_interval, $database_retry_interval)
   $database_max_overflow_real = pick($::rally::database_max_overflow, $database_max_overflow)
 
-  validate_legacy(Oslo::Dbconn, 'validate_re', $database_connection_real,
-    ['(sqlite|mysql|postgresql):\/\/(\S+:\S+@\S+\/\S+)?'])
-
   # This is only for rally SQLite
   if $database_connection_real =~ /^sqlite:\/\// {
     $sqlite_dir = regsubst($database_connection_real,'^sqlite:\/\/\/(\S+)+\/(\S+)$','\1')
