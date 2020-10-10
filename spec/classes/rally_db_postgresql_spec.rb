@@ -16,6 +16,8 @@ describe 'rally::db::postgresql' do
         req_params
       end
 
+      it { is_expected.to contain_class('rally::deps') }
+
       it { is_expected.to contain_openstacklib__db__postgresql('rally').with(
         :user       => 'rally',
         :password   => 'rallypass',
