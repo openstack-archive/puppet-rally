@@ -4,6 +4,8 @@ describe 'rally::db::sync' do
 
   shared_examples_for 'rally-dbsync' do
 
+    it { is_expected.to contain_class('rally::deps') }
+
     it 'runs rally-manage db_sync' do
       is_expected.to contain_exec('rally-manage db_sync').with(
         :command     => 'rally-manage --config-file /etc/rally/rally.conf db create',
