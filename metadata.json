@@ -4,7 +4,7 @@
     "author": "OpenStack Contributors",
     "summary": "Puppet module for OpenStack Rally",
     "license": "Apache-2.0",
-    "source": "git://github.com/openstack/puppet-rally.git",
+    "source": "https://opendev.org/openstack/puppet-rally.git",
     "project_page": "https://launchpad.net/puppet-rally",
     "issues_url": "https://bugs.launchpad.net/puppet-rally",
     "description": "Installs and configures OpenStack Rally.",
