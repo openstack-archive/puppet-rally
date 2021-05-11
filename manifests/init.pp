@@ -31,7 +31,7 @@ class rally (
   $openstack_client_http_timeout = $::os_service_default,
   $purge_config                  = false,
   $sync_db                       = true,
-) inherits ::rally::params {
+) inherits rally::params {
 
   include rally::deps
   include rally::db
