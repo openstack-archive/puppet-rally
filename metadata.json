@@ -1,6 +1,6 @@
 {
     "name": "openstack-rally",
-    "version": "7.4.0",
+    "version": "8.0.0",
     "author": "OpenStack Contributors",
     "summary": "Puppet module for OpenStack Rally",
     "license": "Apache-2.0",
@@ -45,11 +45,11 @@
         },
         {
             "name": "openstack/openstacklib",
-            "version_requirement": ">=19.4.0 <20.0.0"
+            "version_requirement": ">=20.0.0 <21.0.0"
         },
         {
             "name": "openstack/oslo",
-            "version_requirement": ">=19.4.0 <20.0.0"
+            "version_requirement": ">=20.0.0 <21.0.0"
         }
     ]
 }
