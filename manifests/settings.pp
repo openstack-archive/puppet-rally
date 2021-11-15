@@ -41,6 +41,7 @@ class rally::settings (
   include rally::settings::manila
   include rally::settings::murano
   include rally::settings::nova
+  include rally::settings::octavia
   include rally::settings::sahara
   include rally::settings::swift
   include rally::settings::tempest
