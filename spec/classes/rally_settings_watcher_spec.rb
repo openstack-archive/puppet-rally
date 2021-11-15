@@ -16,16 +16,16 @@ describe 'rally::settings::watcher' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally watcher settings with default parameters' do
-      is_expected.to contain_rally_config('benchmark/watcher_audit_launch_poll_interval').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/watcher_audit_launch_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/watcher_audit_launch_poll_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/watcher_audit_launch_timeout').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_watcher_params ) }
     it 'configures rally-settings-watcher settings with all parameters' do
-      is_expected.to contain_rally_config('benchmark/watcher_audit_launch_poll_interval').with(:value => 2.0)
-      is_expected.to contain_rally_config('benchmark/watcher_audit_launch_timeout').with(:value => 300)
+      is_expected.to contain_rally_config('openstack/watcher_audit_launch_poll_interval').with(:value => 2.0)
+      is_expected.to contain_rally_config('openstack/watcher_audit_launch_timeout').with(:value => 300)
     end
   end
 

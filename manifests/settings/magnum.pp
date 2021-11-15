@@ -25,8 +25,14 @@ class rally::settings::magnum (
   include rally::deps
 
   rally_config {
-    'benchmark/magnum_cluster_create_prepoll_delay': value => $magnum_cluster_create_prepoll_delay;
-    'benchmark/magnum_cluster_create_timeout':       value => $magnum_cluster_create_timeout;
-    'benchmark/magnum_cluster_create_poll_interval': value => $magnum_cluster_create_poll_interval;
+    'openstack/magnum_cluster_create_prepoll_delay': value => $magnum_cluster_create_prepoll_delay;
+    'openstack/magnum_cluster_create_timeout':       value => $magnum_cluster_create_timeout;
+    'openstack/magnum_cluster_create_poll_interval': value => $magnum_cluster_create_poll_interval;
+  }
+
+  rally_config {
+    'benchmark/magnum_cluster_create_prepoll_delay': ensure => absent;
+    'benchmark/magnum_cluster_create_timeout':       ensure => absent;
+    'benchmark/magnum_cluster_create_poll_interval': ensure => absent;
   }
 }

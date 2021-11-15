@@ -15,14 +15,14 @@ describe 'rally::settings::mistral' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally mistral settings with default parameters' do
-      is_expected.to contain_rally_config('benchmark/mistral_execution_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/mistral_execution_timeout').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_mistral_params ) }
     it 'configures rally-settings-mistral settings with all parameters' do
-      is_expected.to contain_rally_config('benchmark/mistral_execution_timeout').with(:value => 10.0)
+      is_expected.to contain_rally_config('openstack/mistral_execution_timeout').with(:value => 10.0)
     end
   end
 

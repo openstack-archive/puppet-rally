@@ -16,16 +16,16 @@ describe 'rally::settings::murano' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally murano settings with default parameters' do
-      is_expected.to contain_rally_config('benchmark/murano_deploy_environment_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/murano_deploy_environment_check_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/murano_deploy_environment_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/murano_deploy_environment_check_interval').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_murano_params ) }
     it 'configures rally-settings-murano settings with all parameters' do
-      is_expected.to contain_rally_config('benchmark/murano_deploy_environment_timeout').with(:value => 1200)
-      is_expected.to contain_rally_config('benchmark/murano_deploy_environment_check_interval').with(:value => 5)
+      is_expected.to contain_rally_config('openstack/murano_deploy_environment_timeout').with(:value => 1200)
+      is_expected.to contain_rally_config('openstack/murano_deploy_environment_check_interval').with(:value => 5)
     end
   end
 

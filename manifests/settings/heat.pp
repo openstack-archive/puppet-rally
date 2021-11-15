@@ -131,27 +131,50 @@ class rally::settings::heat (
   include rally::deps
 
   rally_config {
-    'benchmark/heat_stack_check_poll_interval':    value => $stack_check_poll_interval;
-    'benchmark/heat_stack_check_timeout':          value => $stack_check_timeout;
-    'benchmark/heat_stack_create_poll_interval':   value => $stack_create_poll_interval;
-    'benchmark/heat_stack_create_prepoll_delay':   value => $stack_create_prepoll_delay;
-    'benchmark/heat_stack_create_timeout':         value => $stack_create_timeout;
-    'benchmark/heat_stack_delete_poll_interval':   value => $stack_delete_poll_interval;
-    'benchmark/heat_stack_delete_timeout':         value => $stack_delete_timeout;
-    'benchmark/heat_stack_restore_poll_interval':  value => $stack_restore_poll_interval;
-    'benchmark/heat_stack_restore_timeout':        value => $stack_restore_timeout;
-    'benchmark/heat_stack_resume_poll_interval':   value => $stack_resume_poll_interval;
-    'benchmark/heat_stack_resume_timeout':         value => $stack_resume_timeout;
-    'benchmark/heat_stack_scale_poll_interval':    value => $stack_scale_poll_interval;
-    'benchmark/heat_stack_scale_timeout':          value => $stack_scale_timeout;
-    'benchmark/heat_stack_snapshot_poll_interval': value => $stack_snapshot_poll_interval;
-    'benchmark/heat_stack_snapshot_timeout':       value => $stack_snapshot_timeout;
-    'benchmark/heat_stack_suspend_poll_interval':  value => $stack_suspend_poll_interval;
-    'benchmark/heat_stack_suspend_timeout':        value => $stack_suspend_timeout;
-    'benchmark/heat_stack_update_poll_interval':   value => $stack_update_poll_interval;
-    'benchmark/heat_stack_update_prepoll_delay':   value => $stack_update_prepoll_delay;
-    'benchmark/heat_stack_update_timeout':         value => $stack_update_timeout;
+    'openstack/heat_stack_check_poll_interval':    value => $stack_check_poll_interval;
+    'openstack/heat_stack_check_timeout':          value => $stack_check_timeout;
+    'openstack/heat_stack_create_poll_interval':   value => $stack_create_poll_interval;
+    'openstack/heat_stack_create_prepoll_delay':   value => $stack_create_prepoll_delay;
+    'openstack/heat_stack_create_timeout':         value => $stack_create_timeout;
+    'openstack/heat_stack_delete_poll_interval':   value => $stack_delete_poll_interval;
+    'openstack/heat_stack_delete_timeout':         value => $stack_delete_timeout;
+    'openstack/heat_stack_restore_poll_interval':  value => $stack_restore_poll_interval;
+    'openstack/heat_stack_restore_timeout':        value => $stack_restore_timeout;
+    'openstack/heat_stack_resume_poll_interval':   value => $stack_resume_poll_interval;
+    'openstack/heat_stack_resume_timeout':         value => $stack_resume_timeout;
+    'openstack/heat_stack_scale_poll_interval':    value => $stack_scale_poll_interval;
+    'openstack/heat_stack_scale_timeout':          value => $stack_scale_timeout;
+    'openstack/heat_stack_snapshot_poll_interval': value => $stack_snapshot_poll_interval;
+    'openstack/heat_stack_snapshot_timeout':       value => $stack_snapshot_timeout;
+    'openstack/heat_stack_suspend_poll_interval':  value => $stack_suspend_poll_interval;
+    'openstack/heat_stack_suspend_timeout':        value => $stack_suspend_timeout;
+    'openstack/heat_stack_update_poll_interval':   value => $stack_update_poll_interval;
+    'openstack/heat_stack_update_prepoll_delay':   value => $stack_update_prepoll_delay;
+    'openstack/heat_stack_update_timeout':         value => $stack_update_timeout;
     'role/heat_stack_owner_role':                  value => $stack_owner_role;
     'role/heat_stack_user_role':                   value => $stack_user_role;
+  }
+
+  rally_config {
+    'benchmark/heat_stack_check_poll_interval':    ensure => absent;
+    'benchmark/heat_stack_check_timeout':          ensure => absent;
+    'benchmark/heat_stack_create_poll_interval':   ensure => absent;
+    'benchmark/heat_stack_create_prepoll_delay':   ensure => absent;
+    'benchmark/heat_stack_create_timeout':         ensure => absent;
+    'benchmark/heat_stack_delete_poll_interval':   ensure => absent;
+    'benchmark/heat_stack_delete_timeout':         ensure => absent;
+    'benchmark/heat_stack_restore_poll_interval':  ensure => absent;
+    'benchmark/heat_stack_restore_timeout':        ensure => absent;
+    'benchmark/heat_stack_resume_poll_interval':   ensure => absent;
+    'benchmark/heat_stack_resume_timeout':         ensure => absent;
+    'benchmark/heat_stack_scale_poll_interval':    ensure => absent;
+    'benchmark/heat_stack_scale_timeout':          ensure => absent;
+    'benchmark/heat_stack_snapshot_poll_interval': ensure => absent;
+    'benchmark/heat_stack_snapshot_timeout':       ensure => absent;
+    'benchmark/heat_stack_suspend_poll_interval':  ensure => absent;
+    'benchmark/heat_stack_suspend_timeout':        ensure => absent;
+    'benchmark/heat_stack_update_poll_interval':   ensure => absent;
+    'benchmark/heat_stack_update_prepoll_delay':   ensure => absent;
+    'benchmark/heat_stack_update_timeout':         ensure => absent;
   }
 }

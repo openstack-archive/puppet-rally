@@ -20,7 +20,12 @@ class rally::settings::watcher (
   include rally::deps
 
   rally_config {
-    'benchmark/watcher_audit_launch_poll_interval': value => $audit_launch_poll_interval;
-    'benchmark/watcher_audit_launch_timeout':       value => $audit_launch_timeout;
+    'openstack/watcher_audit_launch_poll_interval': value => $audit_launch_poll_interval;
+    'openstack/watcher_audit_launch_timeout':       value => $audit_launch_timeout;
+  }
+
+  rally_config {
+    'benchmark/watcher_audit_launch_poll_interval': ensure => absent;
+    'benchmark/watcher_audit_launch_timeout':       ensure => absent;
   }
 }

@@ -25,8 +25,14 @@ class rally::settings::ec2 (
   include rally::deps
 
   rally_config {
-    'benchmark/ec2_server_boot_poll_interval': value => $server_boot_poll_interval;
-    'benchmark/ec2_server_boot_prepoll_delay': value => $server_boot_prepoll_delay;
-    'benchmark/ec2_server_boot_timeout':       value => $server_boot_timeout;
+    'openstack/ec2_server_boot_poll_interval': value => $server_boot_poll_interval;
+    'openstack/ec2_server_boot_prepoll_delay': value => $server_boot_prepoll_delay;
+    'openstack/ec2_server_boot_timeout':       value => $server_boot_timeout;
+  }
+
+  rally_config {
+    'benchmark/ec2_server_boot_poll_interval': ensure => absent;
+    'benchmark/ec2_server_boot_prepoll_delay': ensure => absent;
+    'benchmark/ec2_server_boot_timeout':       ensure => absent;
   }
 }

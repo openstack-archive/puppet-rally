@@ -17,18 +17,18 @@ describe 'rally::settings::ec2' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally ec2 settings with default parameters' do
-      is_expected.to contain_rally_config('benchmark/ec2_server_boot_prepoll_delay').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/ec2_server_boot_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/ec2_server_boot_poll_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/ec2_server_boot_prepoll_delay').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/ec2_server_boot_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/ec2_server_boot_poll_interval').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_ec2_params ) }
     it 'configures rally-settings-ec2 settings with all parameters' do
-      is_expected.to contain_rally_config('benchmark/ec2_server_boot_prepoll_delay').with(:value => 1.0)
-      is_expected.to contain_rally_config('benchmark/ec2_server_boot_timeout').with(:value => 300.0)
-      is_expected.to contain_rally_config('benchmark/ec2_server_boot_poll_interval').with(:value => 1.0)
+      is_expected.to contain_rally_config('openstack/ec2_server_boot_prepoll_delay').with(:value => 1.0)
+      is_expected.to contain_rally_config('openstack/ec2_server_boot_timeout').with(:value => 300.0)
+      is_expected.to contain_rally_config('openstack/ec2_server_boot_poll_interval').with(:value => 1.0)
     end
   end
 

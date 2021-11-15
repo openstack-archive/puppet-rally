@@ -19,22 +19,22 @@ describe 'rally::settings::glance' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally glance settings with default parameters' do
-      is_expected.to contain_rally_config('benchmark/glance_image_create_prepoll_delay').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/glance_image_create_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/glance_image_create_poll_interval').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/glance_image_delete_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/glance_image_delete_poll_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/glance_image_create_prepoll_delay').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/glance_image_create_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/glance_image_create_poll_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/glance_image_delete_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/glance_image_delete_poll_interval').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_glance_params ) }
     it 'configures rally-settings-glance settings with all parameters' do
-      is_expected.to contain_rally_config('benchmark/glance_image_create_prepoll_delay').with(:value => 2.0)
-      is_expected.to contain_rally_config('benchmark/glance_image_create_timeout').with(:value => 120.0)
-      is_expected.to contain_rally_config('benchmark/glance_image_create_poll_interval').with(:value => 1.0)
-      is_expected.to contain_rally_config('benchmark/glance_image_delete_timeout').with(:value => 120.0)
-      is_expected.to contain_rally_config('benchmark/glance_image_delete_poll_interval').with(:value => 1.0)
+      is_expected.to contain_rally_config('openstack/glance_image_create_prepoll_delay').with(:value => 2.0)
+      is_expected.to contain_rally_config('openstack/glance_image_create_timeout').with(:value => 120.0)
+      is_expected.to contain_rally_config('openstack/glance_image_create_poll_interval').with(:value => 1.0)
+      is_expected.to contain_rally_config('openstack/glance_image_delete_timeout').with(:value => 120.0)
+      is_expected.to contain_rally_config('openstack/glance_image_delete_poll_interval').with(:value => 1.0)
     end
   end
 

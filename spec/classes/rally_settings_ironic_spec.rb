@@ -15,14 +15,14 @@ describe 'rally::settings::ironic' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally ironic settings with default parameters' do
-      is_expected.to contain_rally_config('benchmark/ironic_node_create_poll_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/ironic_node_create_poll_interval').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_ironic_params ) }
     it 'configures rally-settings-ironic settings with all parameters' do
-      is_expected.to contain_rally_config('benchmark/ironic_node_create_poll_interval').with(:value => 1.0)
+      is_expected.to contain_rally_config('openstack/ironic_node_create_poll_interval').with(:value => 1.0)
     end
   end
 

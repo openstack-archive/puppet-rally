@@ -19,22 +19,22 @@ describe 'rally::settings::sahara' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally sahara settings with default parameters' do
-      is_expected.to contain_rally_config('benchmark/sahara_cluster_create_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/sahara_cluster_delete_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/sahara_cluster_check_interval').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/sahara_job_execution_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/sahara_job_check_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/sahara_cluster_create_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/sahara_cluster_delete_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/sahara_cluster_check_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/sahara_job_execution_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/sahara_job_check_interval').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_sahara_params ) }
     it 'configures rally-settings-sahara settings with all parameters' do
-      is_expected.to contain_rally_config('benchmark/sahara_cluster_create_timeout').with(:value => 1800)
-      is_expected.to contain_rally_config('benchmark/sahara_cluster_delete_timeout').with(:value => 900)
-      is_expected.to contain_rally_config('benchmark/sahara_cluster_check_interval').with(:value => 5)
-      is_expected.to contain_rally_config('benchmark/sahara_job_execution_timeout').with(:value => 600)
-      is_expected.to contain_rally_config('benchmark/sahara_job_check_interval').with(:value => 5)
+      is_expected.to contain_rally_config('openstack/sahara_cluster_create_timeout').with(:value => 1800)
+      is_expected.to contain_rally_config('openstack/sahara_cluster_delete_timeout').with(:value => 900)
+      is_expected.to contain_rally_config('openstack/sahara_cluster_check_interval').with(:value => 5)
+      is_expected.to contain_rally_config('openstack/sahara_job_execution_timeout').with(:value => 600)
+      is_expected.to contain_rally_config('openstack/sahara_job_check_interval').with(:value => 5)
     end
   end
 

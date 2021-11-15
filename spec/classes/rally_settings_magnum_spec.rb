@@ -17,18 +17,18 @@ describe 'rally::settings::magnum' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally magnum settings with default parameters' do
-      is_expected.to contain_rally_config('benchmark/magnum_cluster_create_prepoll_delay').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/magnum_cluster_create_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('benchmark/magnum_cluster_create_poll_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/magnum_cluster_create_prepoll_delay').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/magnum_cluster_create_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/magnum_cluster_create_poll_interval').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_magnum_params ) }
     it 'configures rally-settings-magnum settings with all parameters' do
-      is_expected.to contain_rally_config('benchmark/magnum_cluster_create_prepoll_delay').with(:value => 9.0)
-      is_expected.to contain_rally_config('benchmark/magnum_cluster_create_timeout').with(:value => 600.0)
-      is_expected.to contain_rally_config('benchmark/magnum_cluster_create_poll_interval').with(:value => 2.0)
+      is_expected.to contain_rally_config('openstack/magnum_cluster_create_prepoll_delay').with(:value => 9.0)
+      is_expected.to contain_rally_config('openstack/magnum_cluster_create_timeout').with(:value => 600.0)
+      is_expected.to contain_rally_config('openstack/magnum_cluster_create_poll_interval').with(:value => 2.0)
     end
   end
 

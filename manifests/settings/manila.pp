@@ -35,10 +35,18 @@ class rally::settings::manila (
   include rally::deps
 
   rally_config {
-    'benchmark/manila_share_create_poll_interval':         value => $share_create_poll_interval;
-    'benchmark/manila_share_create_prepoll_delay':         value => $share_create_prepoll_delay;
-    'benchmark/manila_share_create_timeout':               value => $share_create_timeout;
-    'benchmark/manila_share_delete_poll_interval':         value => $share_delete_poll_interval;
-    'benchmark/manila_share_delete_timeout':               value => $share_delete_timeout;
+    'openstack/manila_share_create_poll_interval': value => $share_create_poll_interval;
+    'openstack/manila_share_create_prepoll_delay': value => $share_create_prepoll_delay;
+    'openstack/manila_share_create_timeout':       value => $share_create_timeout;
+    'openstack/manila_share_delete_poll_interval': value => $share_delete_poll_interval;
+    'openstack/manila_share_delete_timeout':       value => $share_delete_timeout;
+  }
+
+  rally_config {
+    'benchmark/manila_share_create_poll_interval': ensure => absent;
+    'benchmark/manila_share_create_prepoll_delay': ensure => absent;
+    'benchmark/manila_share_create_timeout':       ensure => absent;
+    'benchmark/manila_share_delete_poll_interval': ensure => absent;
+    'benchmark/manila_share_delete_timeout':       ensure => absent;
   }
 }
