@@ -111,7 +111,6 @@ class rally::settings::heat (
   $stack_create_timeout        = $::os_service_default,
   $stack_delete_poll_interval  = $::os_service_default,
   $stack_delete_timeout        = $::os_service_default,
-  $stack_owner_role            = $::os_service_default,
   $stack_restore_poll_interval = $::os_service_default,
   $stack_restore_timeout       = $::os_service_default,
   $stack_resume_poll_interval  = $::os_service_default,
@@ -125,10 +124,22 @@ class rally::settings::heat (
   $stack_update_poll_interval  = $::os_service_default,
   $stack_update_prepoll_delay  = $::os_service_default,
   $stack_update_timeout        = $::os_service_default,
-  $stack_user_role             = $::os_service_default,
+  # DEPRECATED PARAMETERS
+  $stack_owner_role            = undef,
+  $stack_user_role             = undef
 ) {
 
   include rally::deps
+
+  if $stack_owner_role != undef {
+    warning('The rally::settings::heat::stack_owner_role parameter has been deprecated \
+and has no effect')
+  }
+
+  if $stack_user_role != undef {
+    warning('The rally::settings::heat::stack_user_role parameter has been deprecated \
+and has no effect')
+  }
 
   rally_config {
     'openstack/heat_stack_check_poll_interval':    value => $stack_check_poll_interval;
@@ -151,8 +162,6 @@ class rally::settings::heat (
     'openstack/heat_stack_update_poll_interval':   value => $stack_update_poll_interval;
     'openstack/heat_stack_update_prepoll_delay':   value => $stack_update_prepoll_delay;
     'openstack/heat_stack_update_timeout':         value => $stack_update_timeout;
-    'role/heat_stack_owner_role':                  value => $stack_owner_role;
-    'role/heat_stack_user_role':                   value => $stack_user_role;
   }
 
   rally_config {
@@ -176,5 +185,7 @@ class rally::settings::heat (
     'benchmark/heat_stack_update_poll_interval':   ensure => absent;
     'benchmark/heat_stack_update_prepoll_delay':   ensure => absent;
     'benchmark/heat_stack_update_timeout':         ensure => absent;
+    'role/heat_stack_owner_role':                  ensure => absent;
+    'role/heat_stack_user_role':                   ensure => absent;
   }
 }

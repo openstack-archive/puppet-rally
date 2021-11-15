@@ -29,8 +29,6 @@ describe 'rally::settings::heat' do
       :stack_restore_poll_interval  => 1.0,
       :stack_scale_timeout          => 3600.0,
       :stack_scale_poll_interval    => 1.0,
-      :stack_owner_role             => 'heat_stack_owner',
-      :stack_user_role              => 'heat_stack_user',
     }
   end
 
@@ -56,8 +54,6 @@ describe 'rally::settings::heat' do
       is_expected.to contain_rally_config('openstack/heat_stack_restore_poll_interval').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('openstack/heat_stack_scale_timeout').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('openstack/heat_stack_scale_poll_interval').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('role/heat_stack_owner_role').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('role/heat_stack_user_role').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
@@ -84,8 +80,6 @@ describe 'rally::settings::heat' do
       is_expected.to contain_rally_config('openstack/heat_stack_restore_poll_interval').with(:value => 1.0)
       is_expected.to contain_rally_config('openstack/heat_stack_scale_timeout').with(:value => 3600.0)
       is_expected.to contain_rally_config('openstack/heat_stack_scale_poll_interval').with(:value => 1.0)
-      is_expected.to contain_rally_config('role/heat_stack_owner_role').with(:value => 'heat_stack_owner')
-      is_expected.to contain_rally_config('role/heat_stack_user_role').with(:value => 'heat_stack_user')
     end
   end
 
