@@ -43,12 +43,6 @@
 #   before error is raised. Set to -1 to specify an infinite retry count.
 #   Defaults to $::os_service_default
 #
-# DEPRECATED PARAMETERS
-#
-# [*database_min_pool_size*]
-#   Minimum number of SQL connections to keep open in a pool.
-#   (Optional) Defaults to undef
-#
 class rally::db (
   $database_connection              = 'sqlite:////var/lib/rally/rally.sqlite',
   $database_connection_recycle_time = $::os_service_default,
@@ -59,15 +53,9 @@ class rally::db (
   $database_pool_timeout            = $::os_service_default,
   $mysql_enable_ndb                 = $::os_service_default,
   $database_db_max_retries          = $::os_service_default,
-  # DEPRECATED PARAMETERS
-  $database_min_pool_size           = undef,
 ) {
 
   include rally::deps
-
-  if $database_min_pool_size {
-    warning('The database_min_pool_size parameter is deprecated, and will be removed in a future release.')
-  }
 
   # This is only for rally SQLite
   if $database_connection =~ /^sqlite:\/\// {
