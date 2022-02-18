@@ -69,16 +69,9 @@ class rally::db (
     warning('The database_min_pool_size parameter is deprecated, and will be removed in a future release.')
   }
 
-  $database_connection_real = pick($::rally::database_connection, $database_connection)
-  $database_connection_recycle_time_real = pick($::rally::database_idle_timeout, $database_connection_recycle_time)
-  $database_max_pool_size_real = pick($::rally::database_max_pool_size, $database_max_pool_size)
-  $database_max_retries_real = pick($::rally::database_max_retries, $database_max_retries)
-  $database_retry_interval_real = pick($::rally::database_retry_interval, $database_retry_interval)
-  $database_max_overflow_real = pick($::rally::database_max_overflow, $database_max_overflow)
-
   # This is only for rally SQLite
-  if $database_connection_real =~ /^sqlite:\/\// {
-    $sqlite_dir = regsubst($database_connection_real,'^sqlite:\/\/\/(\S+)+\/(\S+)$','\1')
+  if $database_connection =~ /^sqlite:\/\// {
+    $sqlite_dir = regsubst($database_connection,'^sqlite:\/\/\/(\S+)+\/(\S+)$','\1')
     ensure_resource('file', $sqlite_dir,{
       ensure => directory,
       owner  => root,
@@ -88,12 +81,12 @@ class rally::db (
   }
 
   oslo::db { 'rally_config':
-    connection              => $database_connection_real,
-    connection_recycle_time => $database_connection_recycle_time_real,
-    max_pool_size           => $database_max_pool_size_real,
-    max_retries             => $database_max_retries_real,
-    retry_interval          => $database_retry_interval_real,
-    max_overflow            => $database_max_overflow_real,
+    connection              => $database_connection,
+    connection_recycle_time => $database_connection_recycle_time,
+    max_pool_size           => $database_max_pool_size,
+    max_retries             => $database_max_retries,
+    retry_interval          => $database_retry_interval,
+    max_overflow            => $database_max_overflow,
     pool_timeout            => $database_pool_timeout,
     mysql_enable_ndb        => $mysql_enable_ndb,
     db_max_retries          => $database_db_max_retries,
