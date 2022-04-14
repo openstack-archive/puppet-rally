@@ -142,29 +142,4 @@ class rally::settings::heat (
     'openstack/heat_stack_update_prepoll_delay':   value => $stack_update_prepoll_delay;
     'openstack/heat_stack_update_timeout':         value => $stack_update_timeout;
   }
-
-  rally_config {
-    'benchmark/heat_stack_check_poll_interval':    ensure => absent;
-    'benchmark/heat_stack_check_timeout':          ensure => absent;
-    'benchmark/heat_stack_create_poll_interval':   ensure => absent;
-    'benchmark/heat_stack_create_prepoll_delay':   ensure => absent;
-    'benchmark/heat_stack_create_timeout':         ensure => absent;
-    'benchmark/heat_stack_delete_poll_interval':   ensure => absent;
-    'benchmark/heat_stack_delete_timeout':         ensure => absent;
-    'benchmark/heat_stack_restore_poll_interval':  ensure => absent;
-    'benchmark/heat_stack_restore_timeout':        ensure => absent;
-    'benchmark/heat_stack_resume_poll_interval':   ensure => absent;
-    'benchmark/heat_stack_resume_timeout':         ensure => absent;
-    'benchmark/heat_stack_scale_poll_interval':    ensure => absent;
-    'benchmark/heat_stack_scale_timeout':          ensure => absent;
-    'benchmark/heat_stack_snapshot_poll_interval': ensure => absent;
-    'benchmark/heat_stack_snapshot_timeout':       ensure => absent;
-    'benchmark/heat_stack_suspend_poll_interval':  ensure => absent;
-    'benchmark/heat_stack_suspend_timeout':        ensure => absent;
-    'benchmark/heat_stack_update_poll_interval':   ensure => absent;
-    'benchmark/heat_stack_update_prepoll_delay':   ensure => absent;
-    'benchmark/heat_stack_update_timeout':         ensure => absent;
-    'role/heat_stack_owner_role':                  ensure => absent;
-    'role/heat_stack_user_role':                   ensure => absent;
-  }
 }

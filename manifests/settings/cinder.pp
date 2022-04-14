@@ -42,12 +42,4 @@ class rally::settings::cinder (
     'openstack/cinder_volume_delete_poll_interval': value => $volume_delete_poll_interval;
     'openstack/cinder_volume_delete_timeout':       value => $volume_delete_timeout;
   }
-
-  rally_config {
-    'benchmark/cinder_volume_create_poll_interval': ensure => absent;
-    'benchmark/cinder_volume_create_prepoll_delay': ensure => absent;
-    'benchmark/cinder_volume_create_timeout':       ensure => absent;
-    'benchmark/cinder_volume_delete_poll_interval': ensure => absent;
-    'benchmark/cinder_volume_delete_timeout':       ensure => absent;
-  }
 }

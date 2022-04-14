@@ -17,8 +17,4 @@ class rally::settings::monasca (
   rally_config {
     'openstack/monasca_metric_create_prepoll_delay': value => $monasca_metric_create_prepoll_delay;
   }
-
-  rally_config {
-    'benchmark/monasca_metric_create_prepoll_delay': ensure => absent;
-  }
 }

@@ -29,10 +29,4 @@ class rally::settings::ec2 (
     'openstack/ec2_server_boot_prepoll_delay': value => $server_boot_prepoll_delay;
     'openstack/ec2_server_boot_timeout':       value => $server_boot_timeout;
   }
-
-  rally_config {
-    'benchmark/ec2_server_boot_poll_interval': ensure => absent;
-    'benchmark/ec2_server_boot_prepoll_delay': ensure => absent;
-    'benchmark/ec2_server_boot_timeout':       ensure => absent;
-  }
 }
