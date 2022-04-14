@@ -36,10 +36,6 @@
 #   (Optional) Time (in sec) to wait for heat stack to be deleted.
 #   Defaults to $::os_service_default
 #
-# [*stack_owner_role*]
-#   (Optional) Role required for users to be able to manage Heat stacks
-#   Defaults to $::os_service_default
-#
 # [*stack_restore_poll_interval*]
 #   (Optional) Time interval (in sec) between checks when waiting for stack to
 #   be restored.
@@ -99,10 +95,6 @@
 #   (Optional) Time (in sec) to wait for stack to be updated.
 #   Defaults to $::os_service_default
 #
-# [*stack_user_role*]
-#   (Optional) Role for Heat template-defined users
-#   Defaults to $::os_service_default
-#
 class rally::settings::heat (
   $stack_check_poll_interval   = $::os_service_default,
   $stack_check_timeout         = $::os_service_default,
@@ -124,22 +116,9 @@ class rally::settings::heat (
   $stack_update_poll_interval  = $::os_service_default,
   $stack_update_prepoll_delay  = $::os_service_default,
   $stack_update_timeout        = $::os_service_default,
-  # DEPRECATED PARAMETERS
-  $stack_owner_role            = undef,
-  $stack_user_role             = undef
 ) {
 
   include rally::deps
-
-  if $stack_owner_role != undef {
-    warning('The rally::settings::heat::stack_owner_role parameter has been deprecated \
-and has no effect')
-  }
-
-  if $stack_user_role != undef {
-    warning('The rally::settings::heat::stack_user_role parameter has been deprecated \
-and has no effect')
-  }
 
   rally_config {
     'openstack/heat_stack_check_poll_interval':    value => $stack_check_poll_interval;
