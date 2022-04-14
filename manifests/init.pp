@@ -46,6 +46,20 @@ class rally (
     tag    => ['openstack', 'rally-package'],
   }
 
+  if $::rally::params::plugin_package_name {
+    package { 'rally-openstack':
+      ensure => $package_ensure,
+      name   => $::rally::params::plugin_package_name,
+      tag    => ['openstack', 'rally-package'],
+    }
+  } else {
+    # NOTE(tkajinam): All plugins and job definitions for OpenStack environment
+    #                 has been migrated the separate rally-openstack repo. If
+    #                 this is not packaged, none of Rally jobs for OpenStack
+    #                 environment can be executed.
+    warning('rally-openstack is not packaged for this OS.')
+  }
+
   resources { 'rally_config':
     purge => $purge_config,
   }
