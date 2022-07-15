@@ -33,7 +33,7 @@ describe 'Puppet::Type.type(:rally_config)' do
     expect(@rally_config[:value]).to eq('bar')
   end
 
-  it 'should not accept a value with whitespace' do
+  it 'should accept a value with whitespace' do
     @rally_config[:value] = 'b ar'
     expect(@rally_config[:value]).to eq('b ar')
   end
