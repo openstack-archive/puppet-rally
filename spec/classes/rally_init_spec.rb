@@ -15,6 +15,13 @@ describe 'rally' do
           :ensure => 'present',
           :tag    => ['openstack', 'rally-package']
         )
+        if platform_params.has_key?(:plugin_package_name)
+          is_expected.to contain_package('rally-openstack').with(
+            :name   => platform_params[:plugin_package_name],
+            :ensure => 'present',
+            :tag    => ['openstack', 'rally-package']
+          )
+        end
       end
 
       it 'passes purge to resource' do
@@ -55,7 +62,8 @@ describe 'rally' do
         when 'Debian'
           { :package_name => 'rally' }
         when 'RedHat'
-          { :package_name => 'openstack-rally' }
+          { :package_name        => 'openstack-rally',
+            :plugin_package_name => 'openstack-rally-plugins' }
         end
       end
       it_behaves_like 'rally'

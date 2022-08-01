@@ -7,10 +7,12 @@ class rally::params {
 
   case $::osfamily {
     'RedHat': {
-      $package_name  = 'openstack-rally'
+      $package_name        = 'openstack-rally'
+      $plugin_package_name = 'openstack-rally-plugins'
     }
     'Debian': {
-      $package_name  = 'rally'
+      $package_name        = 'rally'
+      $plugin_package_name = false
     }
     default: {
       fail("Unsupported osfamily: ${::osfamily} operatingsystem")
