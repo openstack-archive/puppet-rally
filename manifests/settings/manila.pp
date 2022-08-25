@@ -41,12 +41,4 @@ class rally::settings::manila (
     'openstack/manila_share_delete_poll_interval': value => $share_delete_poll_interval;
     'openstack/manila_share_delete_timeout':       value => $share_delete_timeout;
   }
-
-  rally_config {
-    'benchmark/manila_share_create_poll_interval': ensure => absent;
-    'benchmark/manila_share_create_prepoll_delay': ensure => absent;
-    'benchmark/manila_share_create_timeout':       ensure => absent;
-    'benchmark/manila_share_delete_poll_interval': ensure => absent;
-    'benchmark/manila_share_delete_timeout':       ensure => absent;
-  }
 }

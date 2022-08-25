@@ -78,18 +78,4 @@ class rally::settings::tempest (
     'openstack/flavor_ref_alt_ram':        value => $flavor_ref_alt_ram;
     'openstack/heat_instance_type_ram':    value => $heat_instance_type_ram;
   }
-
-  rally_config {
-    'tempest/img_url':                   ensure => absent;
-    'tempest/img_disk_format':           ensure => absent;
-    'tempest/img_container_format':      ensure => absent;
-    'tempest/img_name_regex':            ensure => absent;
-    'tempest/swift_operator_role':       ensure => absent;
-    'tempest/swift_reseller_admin_role': ensure => absent;
-    'tempest/heat_stack_owner_role':     ensure => absent;
-    'tempest/heat_stack_user_role':      ensure => absent;
-    'tempest/flavor_ref_ram':            ensure => absent;
-    'tempest/flavor_ref_alt_ram':        ensure => absent;
-    'tempest/heat_instance_type_ram':    ensure => absent;
-  }
 }

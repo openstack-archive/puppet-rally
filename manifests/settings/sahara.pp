@@ -47,13 +47,4 @@ class rally::settings::sahara (
     'openstack/sahara_job_execution_timeout':  value => $job_execution_timeout;
     'openstack/sahara_workers_per_proxy':      value => $workers_per_proxy;
   }
-
-  rally_config {
-    'benchmark/sahara_cluster_check_interval': ensure => absent;
-    'benchmark/sahara_cluster_create_timeout': ensure => absent;
-    'benchmark/sahara_cluster_delete_timeout': ensure => absent;
-    'benchmark/sahara_job_check_interval':     ensure => absent;
-    'benchmark/sahara_job_execution_timeout':  ensure => absent;
-    'benchmark/sahara_workers_per_proxy':      ensure => absent;
-  }
 }

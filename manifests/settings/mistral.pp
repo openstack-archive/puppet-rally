@@ -17,8 +17,4 @@ class rally::settings::mistral (
   rally_config {
     'openstack/mistral_execution_timeout': value => $mistral_execution_timeout;
   }
-
-  rally_config {
-    'benchmark/mistral_execution_timeout': ensure => absent;
-  }
 }

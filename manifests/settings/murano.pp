@@ -23,9 +23,4 @@ class rally::settings::murano (
     'openstack/murano_deploy_environment_check_interval': value => $deploy_environment_check_interval;
     'openstack/murano_deploy_environment_timeout':        value => $deploy_environment_timeout;
   }
-
-  rally_config {
-    'benchmark/murano_deploy_environment_check_interval': ensure => absent;
-    'benchmark/murano_deploy_environment_timeout':        ensure => absent;
-  }
 }

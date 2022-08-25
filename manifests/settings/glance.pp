@@ -42,12 +42,4 @@ class rally::settings::glance (
     'openstack/glance_image_delete_poll_interval': value => $image_delete_poll_interval;
     'openstack/glance_image_delete_timeout':       value => $image_delete_timeout;
   }
-
-  rally_config {
-    'benchmark/glance_image_create_poll_interval': ensure => absent;
-    'benchmark/glance_image_create_prepoll_delay': ensure => absent;
-    'benchmark/glance_image_create_timeout':       ensure => absent;
-    'benchmark/glance_image_delete_poll_interval': ensure => absent;
-    'benchmark/glance_image_delete_timeout':       ensure => absent;
-  }
 }

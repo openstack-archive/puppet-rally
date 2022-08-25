@@ -17,8 +17,4 @@ class rally::settings::ironic (
   rally_config {
     'openstack/ironic_node_create_poll_interval': value => $node_create_poll_interval;
   }
-
-  rally_config {
-    'benchmark/ironic_node_create_poll_interval': ensure => absent;
-  }
 }
