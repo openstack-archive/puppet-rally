@@ -1,0 +1,8 @@
+---
+features:
+  - |
+    The ``rally::settings::cinder`` class now supports the following two new
+    parameters.
+
+    - ``backup_restore_poll_interval``
+    - ``backup_restore_timeout``

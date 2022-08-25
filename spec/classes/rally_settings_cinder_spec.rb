@@ -9,11 +9,13 @@ describe 'rally::settings::cinder' do
 
   let :rally_cinder_params do
     {
-      :volume_create_prepoll_delay => 2.0,
-      :volume_create_timeout       => 600.0,
-      :volume_create_poll_interval => 2.0,
-      :volume_delete_timeout       => 600.0,
-      :volume_delete_poll_interval => 2.0,
+      :volume_create_prepoll_delay  => 2.0,
+      :volume_create_timeout        => 600.0,
+      :volume_create_poll_interval  => 3.0,
+      :volume_delete_timeout        => 601.0,
+      :volume_delete_poll_interval  => 4.0,
+      :backup_restore_timeout       => 602.0,
+      :backup_restore_poll_interval => 5.0,
     }
   end
 
@@ -24,6 +26,8 @@ describe 'rally::settings::cinder' do
       is_expected.to contain_rally_config('openstack/cinder_volume_create_poll_interval').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('openstack/cinder_volume_delete_timeout').with(:value => '<SERVICE DEFAULT>')
       is_expected.to contain_rally_config('openstack/cinder_volume_delete_poll_interval').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/cinder_backup_restore_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/cinder_backup_restore_poll_interval').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
@@ -32,9 +36,11 @@ describe 'rally::settings::cinder' do
     it 'configures rally-settings-cinder settings with all parameters' do
       is_expected.to contain_rally_config('openstack/cinder_volume_create_prepoll_delay').with(:value => 2.0)
       is_expected.to contain_rally_config('openstack/cinder_volume_create_timeout').with(:value => 600.0)
-      is_expected.to contain_rally_config('openstack/cinder_volume_create_poll_interval').with(:value => 2.0)
-      is_expected.to contain_rally_config('openstack/cinder_volume_delete_timeout').with(:value => 600.0)
-      is_expected.to contain_rally_config('openstack/cinder_volume_delete_poll_interval').with(:value => 2.0)
+      is_expected.to contain_rally_config('openstack/cinder_volume_create_poll_interval').with(:value => 3.0)
+      is_expected.to contain_rally_config('openstack/cinder_volume_delete_timeout').with(:value => 601.0)
+      is_expected.to contain_rally_config('openstack/cinder_volume_delete_poll_interval').with(:value => 4.0)
+      is_expected.to contain_rally_config('openstack/cinder_backup_restore_timeout').with(:value => 602.0)
+      is_expected.to contain_rally_config('openstack/cinder_backup_restore_poll_interval').with(:value => 5.0)
     end
   end
 
