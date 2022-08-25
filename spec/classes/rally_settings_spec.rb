@@ -19,20 +19,20 @@ describe 'rally::settings' do
 
   shared_examples_for 'with default parameters' do
     it 'configures rally settings with default parameters' do
-      is_expected.to contain_rally_config('cleanup/resource_deletion_timeout').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('users_context/project_domain').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('users_context/resource_management_workers').with(:value => '<SERVICE DEFAULT>')
-      is_expected.to contain_rally_config('users_context/user_domain').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/resource_deletion_timeout').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/project_domain').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/users_context_resource_management_workers').with(:value => '<SERVICE DEFAULT>')
+      is_expected.to contain_rally_config('openstack/user_domain').with(:value => '<SERVICE DEFAULT>')
     end
   end
 
   shared_examples_for 'with all parameters' do
     before { params.merge!( rally_settings_params ) }
     it 'configures rally settings with all parameters' do
-      is_expected.to contain_rally_config('cleanup/resource_deletion_timeout').with(:value => 600)
-      is_expected.to contain_rally_config('users_context/project_domain').with(:value => 'default')
-      is_expected.to contain_rally_config('users_context/resource_management_workers').with(:value => 30)
-      is_expected.to contain_rally_config('users_context/user_domain').with(:value => 'default')
+      is_expected.to contain_rally_config('openstack/resource_deletion_timeout').with(:value => 600)
+      is_expected.to contain_rally_config('openstack/project_domain').with(:value => 'default')
+      is_expected.to contain_rally_config('openstack/users_context_resource_management_workers').with(:value => 30)
+      is_expected.to contain_rally_config('openstack/user_domain').with(:value => 'default')
     end
   end
 

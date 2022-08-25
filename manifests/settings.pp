@@ -51,9 +51,16 @@ class rally::settings (
   include rally::settings::watcher
 
   rally_config {
-    'cleanup/resource_deletion_timeout':         value => $resource_deletion_timeout;
-    'users_context/project_domain':              value => $project_domain;
-    'users_context/resource_management_workers': value => $resource_management_workers;
-    'users_context/user_domain':                 value => $user_domain;
+    'openstack/resource_deletion_timeout':                 value => $resource_deletion_timeout;
+    'openstack/project_domain':                            value => $project_domain;
+    'openstack/users_context_resource_management_workers': value => $resource_management_workers;
+    'openstack/user_domain':                               value => $user_domain;
+  }
+
+  rally_config {
+    'cleanup/resource_deletion_timeout':         ensure => absent;
+    'users_context/project_domain':              ensure => absent;
+    'users_context/resource_management_workers': ensure => absent;
+    'users_context/user_domain':                 ensure => absent;
   }
 }
