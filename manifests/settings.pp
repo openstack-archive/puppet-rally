@@ -34,7 +34,6 @@ class rally::settings (
 
   include rally::deps
   include rally::settings::cinder
-  include rally::settings::ec2
   include rally::settings::glance
   include rally::settings::heat
   include rally::settings::ironic

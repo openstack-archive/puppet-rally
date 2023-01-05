@@ -22,6 +22,9 @@ class rally::settings::ec2 (
   $server_boot_timeout       = $::os_service_default,
 ) {
 
+  warning("The rally::settings::ec2 class has been deprecated and \
+will be removed in a future release.")
+
   include rally::deps
 
   rally_config {
