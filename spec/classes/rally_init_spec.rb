@@ -15,13 +15,11 @@ describe 'rally' do
           :ensure => 'present',
           :tag    => ['openstack', 'rally-package']
         )
-        if platform_params.has_key?(:plugin_package_name)
-          is_expected.to contain_package('rally-openstack').with(
-            :name   => platform_params[:plugin_package_name],
-            :ensure => 'present',
-            :tag    => ['openstack', 'rally-package']
-          )
-        end
+        is_expected.to contain_package('rally-openstack').with(
+          :name   => platform_params[:plugin_package_name],
+          :ensure => 'present',
+          :tag    => ['openstack', 'rally-package']
+        )
       end
 
       it 'passes purge to resource' do
@@ -60,7 +58,8 @@ describe 'rally' do
       let(:platform_params) do
         case facts[:osfamily]
         when 'Debian'
-          { :package_name => 'rally' }
+          { :package_name        => 'rally',
+            :plugin_package_name => 'python3-rally-openstack' }
         when 'RedHat'
           { :package_name        => 'openstack-rally',
             :plugin_package_name => 'openstack-rally-plugins' }

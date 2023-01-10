@@ -12,7 +12,7 @@ class rally::params {
     }
     'Debian': {
       $package_name        = 'rally'
-      $plugin_package_name = false
+      $plugin_package_name = 'python3-rally-openstack'
     }
     default: {
       fail("Unsupported osfamily: ${::osfamily} operatingsystem")
