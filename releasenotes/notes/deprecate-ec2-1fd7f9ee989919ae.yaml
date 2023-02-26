@@ -1,0 +1,5 @@
+---
+deprecations:
+  - |
+    The ``rally::settings::ec2`` class has been deprecated because rally
+    no longer supports EC2 API.
