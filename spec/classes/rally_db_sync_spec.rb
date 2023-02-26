@@ -50,6 +50,32 @@ describe 'rally::db::sync' do
         )
       }
     end
+
+    context "upgrade enabled" do
+      let :params do
+        {
+          :upgrade => true
+        }
+      end
+
+      it {
+        is_expected.to contain_exec('rally db_sync').with(
+          :command     => 'rally --config-file /etc/rally/rally.conf db upgrade',
+          :user        => 'root',
+          :path        => '/usr/bin',
+          :refreshonly => 'true',
+          :try_sleep   => 5,
+          :tries       => 10,
+          :timeout     => 300,
+          :logoutput   => 'on_failure',
+          :subscribe   => ['Anchor[rally::install::end]',
+                           'Anchor[rally::config::end]',
+                           'Anchor[rally::dbsync::begin]'],
+          :notify      => 'Anchor[rally::dbsync::end]',
+          :tag         => 'openstack-db',
+        )
+      }
+    end
   end
 
   on_supported_os({

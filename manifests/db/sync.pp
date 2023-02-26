@@ -13,15 +13,27 @@
 #   (Optional) Timeout for the execution of the db_sync
 #   Defaults to 300
 #
+# [*upgrade*]
+#   (Optional) Run rally db upgrade command instead of rally db create command.
+#   Defaults to false
+#
 class rally::db::sync(
   $extra_params    = '--config-file /etc/rally/rally.conf',
   $db_sync_timeout = 300,
+  $upgrade         = false,
 ) {
 
   include rally::deps
 
+  validate_legacy(Boolean, 'validate_bool', $upgrade)
+
+  $subcommand = $upgrade ? {
+    true    => 'upgrade',
+    default => 'create'
+  }
+
   exec { 'rally db_sync':
-    command     => "rally ${extra_params} db create",
+    command     => "rally ${extra_params} db ${subcommand}",
     path        => '/usr/bin',
     user        => 'root',
     refreshonly => true,
