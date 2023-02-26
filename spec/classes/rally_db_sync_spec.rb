@@ -6,9 +6,9 @@ describe 'rally::db::sync' do
 
     it { is_expected.to contain_class('rally::deps') }
 
-    it 'runs rally-manage db_sync' do
-      is_expected.to contain_exec('rally-manage db_sync').with(
-        :command     => 'rally-manage --config-file /etc/rally/rally.conf db create',
+    it 'runs rally db_sync' do
+      is_expected.to contain_exec('rally db_sync').with(
+        :command     => 'rally --config-file /etc/rally/rally.conf db create',
         :user        => 'root',
         :path        => '/usr/bin',
         :refreshonly => 'true',
@@ -24,33 +24,32 @@ describe 'rally::db::sync' do
       )
     end
 
-  describe "overriding params" do
-    let :params do
-      {
-        :extra_params    => '--config-file /var/lib/rally/rally.conf',
-        :db_sync_timeout => 750,
+    context "overriding params" do
+      let :params do
+        {
+          :extra_params    => '--config-file /var/lib/rally/rally.conf',
+          :db_sync_timeout => 750,
+        }
+      end
+
+      it {
+        is_expected.to contain_exec('rally db_sync').with(
+          :command     => 'rally --config-file /var/lib/rally/rally.conf db create',
+          :user        => 'root',
+          :path        => '/usr/bin',
+          :refreshonly => 'true',
+          :try_sleep   => 5,
+          :tries       => 10,
+          :timeout     => 750,
+          :logoutput   => 'on_failure',
+          :subscribe   => ['Anchor[rally::install::end]',
+                           'Anchor[rally::config::end]',
+                           'Anchor[rally::dbsync::begin]'],
+          :notify      => 'Anchor[rally::dbsync::end]',
+          :tag         => 'openstack-db',
+        )
       }
     end
-
-    it {
-      is_expected.to contain_exec('rally-manage db_sync').with(
-        :command     => 'rally-manage --config-file /var/lib/rally/rally.conf db create',
-        :user        => 'root',
-        :path        => '/usr/bin',
-        :refreshonly => 'true',
-        :try_sleep   => 5,
-        :tries       => 10,
-        :timeout     => 750,
-        :logoutput   => 'on_failure',
-        :subscribe   => ['Anchor[rally::install::end]',
-                         'Anchor[rally::config::end]',
-                         'Anchor[rally::dbsync::begin]'],
-        :notify      => 'Anchor[rally::dbsync::end]',
-        :tag         => 'openstack-db',
-      )
-      }
-    end
-
   end
 
   on_supported_os({

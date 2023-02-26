@@ -5,8 +5,8 @@
 #
 # [*extra_params*]
 #   (Optional) String of extra command line parameters to append
-#   to the rally-manage db sync command. These will be inserted
-#   in the command line between 'rally-manage' and 'db create'.
+#   to the rally db sync command. These will be inserted in the command line
+#   between 'rally' and 'db create'.
 #   Defaults to '--config-file /etc/rally/rally.conf'
 #
 # [*db_sync_timeout*]
@@ -20,8 +20,8 @@ class rally::db::sync(
 
   include rally::deps
 
-  exec { 'rally-manage db_sync':
-    command     => "rally-manage ${extra_params} db create",
+  exec { 'rally db_sync':
+    command     => "rally ${extra_params} db create",
     path        => '/usr/bin',
     user        => 'root',
     refreshonly => true,
