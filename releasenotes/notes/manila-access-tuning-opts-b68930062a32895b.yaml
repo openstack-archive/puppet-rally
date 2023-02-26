@@ -1,0 +1,10 @@
+---
+features:
+  - |
+    The following parameters have been added to the ``rally::settings::manila``
+    class.
+
+    - ``access_create_poll_interval``
+    - ``access_create_poll_timeout``
+    - ``access_delete_poll_interval``
+    - ``access_delete_poll_timeout``
