@@ -6,10 +6,10 @@
 #
 # [*node_create_poll_interval*]
 #   (Optional) Interval (in sec) between checks when waiting for node creation.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 class rally::settings::ironic (
-  $node_create_poll_interval = $::os_service_default,
+  $node_create_poll_interval = $facts['os_service_default'],
 ) {
 
   include rally::deps

@@ -6,20 +6,20 @@
 #
 # [*create_loadbalancer_timeout*]
 #  (Optional) Octavia create loadbalancer timeout.
-#  Defaults to $::os_service_default
+#  Defaults to $facts['os_service_default']
 #
 # [*delete_loadbalancer_timeout*]
 #  (Optional) Octavia delete loadbalancer timeout.
-#  Defaults to $::os_service_default
+#  Defaults to $facts['os_service_default']
 #
 # [*create_loadbalancer_poll_interval*]
 #  (Optional) Octavia create loadbalancer pool interval.
-#  Defaults to $::os_service_default
+#  Defaults to $facts['os_service_default']
 #
 class rally::settings::octavia (
-  $create_loadbalancer_timeout       = $::os_service_default,
-  $delete_loadbalancer_timeout       = $::os_service_default,
-  $create_loadbalancer_poll_interval = $::os_service_default,
+  $create_loadbalancer_timeout       = $facts['os_service_default'],
+  $delete_loadbalancer_timeout       = $facts['os_service_default'],
+  $create_loadbalancer_poll_interval = $facts['os_service_default'],
 ) {
 
   include rally::deps

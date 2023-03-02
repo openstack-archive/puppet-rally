@@ -6,41 +6,41 @@
 #
 # [*volume_create_poll_interval*]
 #   (Optional) Interval between checks when waiting for volume creation.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*volume_create_prepoll_delay*]
 #   (Optional) Time to sleep after creating a resource before polling for it
 #   status
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*volume_create_timeout*]
 #   (Optional) Time to wait for cinder volume to be created.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*volume_delete_poll_interval*]
 #   (Optional) Interval between checks when waiting for volume deletion.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*volume_delete_timeout*]
 #   (Optional) Time to wait for cinder volume to be deleted.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*backup_restore_poll_interval*]
 #   (Optional) Interval between checks when waiting for backup restoring.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*backup_restore_timeout*]
 #   (Optional) Time to wait for cinder backup to be restored.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 class rally::settings::cinder (
-  $volume_create_poll_interval  = $::os_service_default,
-  $volume_create_prepoll_delay  = $::os_service_default,
-  $volume_create_timeout        = $::os_service_default,
-  $volume_delete_poll_interval  = $::os_service_default,
-  $volume_delete_timeout        = $::os_service_default,
-  $backup_restore_poll_interval = $::os_service_default,
-  $backup_restore_timeout       = $::os_service_default,
+  $volume_create_poll_interval  = $facts['os_service_default'],
+  $volume_create_prepoll_delay  = $facts['os_service_default'],
+  $volume_create_timeout        = $facts['os_service_default'],
+  $volume_delete_poll_interval  = $facts['os_service_default'],
+  $volume_delete_timeout        = $facts['os_service_default'],
+  $backup_restore_poll_interval = $facts['os_service_default'],
+  $backup_restore_timeout       = $facts['os_service_default'],
 ) {
 
   include rally::deps

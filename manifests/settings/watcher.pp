@@ -6,15 +6,15 @@
 #
 # [*audit_launch_poll_interval*]
 #   (Optional) Watcher audit launch interval
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*audit_launch_timeout*]
 #   (Optional) Watcher audit launch timeout
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 class rally::settings::watcher (
-  $audit_launch_poll_interval = $::os_service_default,
-  $audit_launch_timeout       = $::os_service_default,
+  $audit_launch_poll_interval = $facts['os_service_default'],
+  $audit_launch_timeout       = $facts['os_service_default'],
 ) {
 
   include rally::deps

@@ -56,7 +56,7 @@ describe 'rally' do
       end
 
       let(:platform_params) do
-        case facts[:osfamily]
+        case facts[:os]['family']
         when 'Debian'
           { :package_name        => 'rally',
             :plugin_package_name => 'python3-rally-openstack' }

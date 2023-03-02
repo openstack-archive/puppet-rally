@@ -6,15 +6,15 @@
 #
 # [*deploy_environment_check_interval*]
 #   (Optional) Deploy environment check interval in seconds
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*deploy_environment_timeout*]
 #   (Optional) A timeout in seconds for an environment deploy
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 class rally::settings::murano (
-  $deploy_environment_check_interval = $::os_service_default,
-  $deploy_environment_timeout        = $::os_service_default,
+  $deploy_environment_check_interval = $facts['os_service_default'],
+  $deploy_environment_timeout        = $facts['os_service_default'],
 ) {
 
   include rally::deps

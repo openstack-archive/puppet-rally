@@ -6,10 +6,10 @@
 #
 # [*monasca_metric_create_prepoll_delay*]
 #   (Optional) Interval (in sec) between checks when waiting for node creation.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 class rally::settings::monasca (
-  $monasca_metric_create_prepoll_delay = $::os_service_default,
+  $monasca_metric_create_prepoll_delay = $facts['os_service_default'],
 ) {
 
   include rally::deps

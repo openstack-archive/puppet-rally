@@ -6,35 +6,35 @@
 #
 # [*cluster_check_interval*]
 #   (Optional) Cluster status polling interval in seconds
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*cluster_create_timeout*]
 #   (Optional) A timeout in seconds for a cluster create operation
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*cluster_delete_timeout*]
 #   (Optional) A timeout in seconds for a cluster delete operation
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*job_check_interval*]
 #   (Optional) Job Execution status polling interval in seconds
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*job_execution_timeout*]
 #   (Optional) A timeout in seconds for a Job Execution to complete
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*workers_per_proxy*]
 #   (Optional) Amount of workers one proxy should serve to.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 class rally::settings::sahara (
-  $cluster_check_interval = $::os_service_default,
-  $cluster_create_timeout = $::os_service_default,
-  $cluster_delete_timeout = $::os_service_default,
-  $job_check_interval     = $::os_service_default,
-  $job_execution_timeout  = $::os_service_default,
-  $workers_per_proxy      = $::os_service_default,
+  $cluster_check_interval = $facts['os_service_default'],
+  $cluster_create_timeout = $facts['os_service_default'],
+  $cluster_delete_timeout = $facts['os_service_default'],
+  $job_check_interval     = $facts['os_service_default'],
+  $job_execution_timeout  = $facts['os_service_default'],
+  $workers_per_proxy      = $facts['os_service_default'],
 ) {
 
   include rally::deps

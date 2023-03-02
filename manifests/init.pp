@@ -10,11 +10,11 @@
 #
 # [*rally_debug*]
 #   (optional) Print debugging output only for Rally. (boolean value)
-#   Defaults to $::os_service_default.
+#   Defaults to $facts['os_service_default'].
 #
 # [*openstack_client_http_timeout*]
 #   (optional) HTTP timeout for any of OpenStack service in seconds (floating point value)
-#   Defaults to $::os_service_default.
+#   Defaults to $facts['os_service_default'].
 #
 # [*purge_config*]
 #   (optional) Whether to set only the specified config options
@@ -27,8 +27,8 @@
 #
 class rally (
   $package_ensure                = 'present',
-  $rally_debug                   = $::os_service_default,
-  $openstack_client_http_timeout = $::os_service_default,
+  $rally_debug                   = $facts['os_service_default'],
+  $openstack_client_http_timeout = $facts['os_service_default'],
   $purge_config                  = false,
   $sync_db                       = true,
 ) inherits rally::params {

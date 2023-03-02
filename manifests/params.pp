@@ -5,7 +5,7 @@
 class rally::params {
   include openstacklib::defaults
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'RedHat': {
       $package_name        = 'openstack-rally'
       $plugin_package_name = 'openstack-rally-plugins'
@@ -15,8 +15,8 @@ class rally::params {
       $plugin_package_name = 'python3-rally-openstack'
     }
     default: {
-      fail("Unsupported osfamily: ${::osfamily} operatingsystem")
+      fail("Unsupported osfamily: ${facts['os']['family']}")
     }
 
-  } # Case $::osfamily
+  } # Case $facts['os']['family']
 }

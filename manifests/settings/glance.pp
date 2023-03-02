@@ -6,31 +6,31 @@
 #
 # [*image_create_poll_interval*]
 #   (Optional) Interval between checks when waiting for image creation.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*image_create_prepoll_delay*]
 #   (Optional) Time to sleep after creating a resource before polling for it
 #   status
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*image_create_timeout*]
 #   (Optional) Time to wait for glance image to be created.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*image_delete_poll_interval*]
 #   (Optional) Interval between checks when waiting for image deletion.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 # [*image_delete_timeout*]
 #   (Optional) Time to wait for glance image to be deleted.
-#   Defaults to $::os_service_default
+#   Defaults to $facts['os_service_default']
 #
 class rally::settings::glance (
-  $image_create_poll_interval = $::os_service_default,
-  $image_create_prepoll_delay = $::os_service_default,
-  $image_create_timeout       = $::os_service_default,
-  $image_delete_poll_interval = $::os_service_default,
-  $image_delete_timeout       = $::os_service_default,
+  $image_create_poll_interval = $facts['os_service_default'],
+  $image_create_prepoll_delay = $facts['os_service_default'],
+  $image_create_timeout       = $facts['os_service_default'],
+  $image_delete_poll_interval = $facts['os_service_default'],
+  $image_delete_timeout       = $facts['os_service_default'],
 ) {
 
   include rally::deps
