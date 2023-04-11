@@ -1,8 +1,0 @@
----
-deprecations:
-  - |
-    The following parameters of the ``rally::settings::heat`` class have been
-    deprecated and have no effect.
-
-    - ``stack_owner_role``
-    - ``stack_user_role``

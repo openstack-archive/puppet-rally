@@ -1,6 +1,0 @@
----
-features:
-  - |
-    The new ``rally::db::sync::upgrade`` parameter has been added. When this
-    parameter is set to ``true``, ``rally db upgrade`` command is executed
-    instead of ``rally db create`` command.

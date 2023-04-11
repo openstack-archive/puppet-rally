@@ -1,4 +1,0 @@
----
-features:
-  - |
-    The new ``rally::settings::octavia`` class has been added.
